@@ -101,7 +101,7 @@ export default function Hero() {
             </a>
 
             <a
-              href="/Mujtaba_Khan_iOS_Developer.pdf"
+              href={`${import.meta.env.BASE_URL}Mujtaba_Khan_iOS_Developer.pdf`}
               download
               className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full border border-white/20 text-white font-semibold text-sm sm:text-base flex items-center justify-center gap-2 hover:bg-white/5 transition-colors hover:scale-105 active:scale-95"
             >
