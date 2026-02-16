@@ -41,7 +41,7 @@ export default function About() {
               {/* Image container */}
               <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 shadow-2xl hover:scale-[1.02] transition-transform duration-500">
                 <img
-                  src="src/profile.jpg"
+                  src="src/assets/images/profile.jpg"
                   alt="Mujtaba Khan"
                   className="w-full h-full object-cover"
                 />
