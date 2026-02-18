@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Code2, Smartphone } from 'lucide-react';
 
 // IMPORTANT: import image so Vite bundles it correctly
-import profile from '../assets/images/profile.jpg';
+import profile from '../assets/images/profile-2026.jpg';
 
 const stats = [
   { icon: Code2, value: '8+', label: 'Years Experience', color: 'from-blue-500 to-cyan-500' },
