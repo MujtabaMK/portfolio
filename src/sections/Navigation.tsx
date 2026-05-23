@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import logoMhk from '../assets/images/logo-mhk.png';
 
 interface NavigationProps {
   scrollY: number;
@@ -47,9 +48,18 @@ export default function Navigation({ scrollY }: NavigationProps) {
           {/* Logo */}
           <a
             href="#"
-            className="text-xl sm:text-2xl font-display font-bold text-white hover:scale-105 transition-transform"
+            aria-label="Mujtaba Khan home"
+            className="flex items-center hover:scale-105 transition-transform"
           >
-            <span className="text-gradient">Mujtaba Ul Hasan Khan.</span>
+            <img
+              src={logoMhk}
+              alt="MHK"
+              className="w-11 h-11 sm:w-12 sm:h-12 object-contain"
+              style={{
+                filter:
+                  'invert(1) hue-rotate(180deg) brightness(1.05) contrast(1.1) drop-shadow(0 0 12px rgba(124, 58, 237, 0.35))',
+              }}
+            />
           </a>
 
           {/* Desktop Navigation */}

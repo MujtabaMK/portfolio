@@ -34,7 +34,7 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
 
           {/* Image Column */}
-          <div className={`relative transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
+          <div data-aos="fade-right" data-aos-duration="900" className={`relative transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <div className="relative aspect-[4/5] max-w-xs sm:max-w-sm md:max-w-md mx-auto lg:mx-0">
 
               {/* Background glow */}
@@ -72,19 +72,19 @@ export default function About() {
           {/* Content Column */}
           <div>
             <div className={`transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+              <span data-aos="fade-up" className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-4 sm:mb-6">
                 About Me
               </span>
             </div>
 
-            <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white mb-4 sm:mb-6 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h2 data-aos="fade-up" data-aos-delay="100" className={`text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white mb-4 sm:mb-6 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Crafting Digital
               <span className="text-gradient block">Experiences</span>
             </h2>
 
             <div className={`space-y-3 sm:space-y-4 text-sm sm:text-base text-white/70 leading-relaxed mb-6 sm:mb-8 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <p>
-                I'm <span className="text-white font-semibold">Mujtaba Khan</span>, a passionate iOS developer 
+                I'm <span className="text-white font-semibold">Mujtaba Khan</span>, a passionate iOS developer
                 with over 8 years of experience building beautiful, functional mobile applications.
               </p>
               <p>
@@ -103,14 +103,15 @@ export default function About() {
               {stats.map((stat, index) => (
                 <div
                   key={stat.label}
-                  className={`glass rounded-xl sm:rounded-2xl p-3 sm:p-4 group cursor-default hover:-translate-y-1 hover:scale-105 transition-all duration-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                  style={{ transitionDelay: `${400 + index * 100}ms` }}
+                  data-aos="zoom-in"
+                  data-aos-delay={300 + index * 120}
+                  className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4 group cursor-default hover:-translate-y-1 hover:scale-105 transition-all duration-300"
                 >
                   <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-r ${stat.color} flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition-transform`}>
                     <stat.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                   </div>
                   <div className="text-xl sm:text-2xl font-display font-bold text-white mb-0.5 sm:mb-1">{stat.value}</div>
-                  <div className="text-xs sm:text-sm text-white/50">{stat.label}</div>
+                  <div className="text-xs sm:text-sm text-white/70">{stat.label}</div>
                 </div>
               ))}
             </div>

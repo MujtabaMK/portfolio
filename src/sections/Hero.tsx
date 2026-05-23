@@ -1,16 +1,57 @@
-import { useEffect, useState } from 'react';
-import { ArrowDown, Download, ExternalLink } from 'lucide-react';
+import { useEffect, useState, useRef } from 'react';
+import { Download, ExternalLink } from 'lucide-react';
+import { gsap } from 'gsap';
 import resume from "../assets/files/Mujtaba_Khan_iOS_Developer.pdf";
 
+function AnimatedNumber({ end, suffix = '', duration = 1.6, trigger = true }: { end: number; suffix?: string; duration?: number; trigger?: boolean }) {
+  const [value, setValue] = useState(0);
+  useEffect(() => {
+    if (!trigger) return;
+    const obj = { val: 0 };
+    const tween = gsap.to(obj, {
+      val: end,
+      duration,
+      ease: 'power3.out',
+      onUpdate: () => setValue(Math.floor(obj.val)),
+    });
+    return () => { tween.kill(); };
+  }, [end, duration, trigger]);
+  return <>{value}{suffix}</>;
+}
+
 export default function Hero() {
+  const nameRef = useRef<HTMLHeadingElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const descRef = useRef<HTMLParagraphElement>(null);
   const [displayText, setDisplayText] = useState('');
-  const fullText = "Hi, I'm Mujtaba 👋";
+  const fullText = "Hi, I'm";
   const [showCursor, setShowCursor] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 300);
     return () => clearTimeout(timer);
+  }, []);
+
+  // GSAP reveal: name → title → description with stagger
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ delay: 0.45, defaults: { ease: 'power3.out' } });
+      if (nameRef.current) {
+        tl.fromTo(
+          nameRef.current,
+          { yPercent: 60, opacity: 0 },
+          { yPercent: 0, opacity: 1, duration: 1.1 }
+        );
+      }
+      if (titleRef.current) {
+        tl.fromTo(titleRef.current, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.6');
+      }
+      if (descRef.current) {
+        tl.fromTo(descRef.current, { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, '-=0.5');
+      }
+    });
+    return () => ctx.revert();
   }, []);
 
   useEffect(() => {
@@ -66,27 +107,32 @@ export default function Hero() {
           <div className="mb-3 sm:mb-4">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display text-white/80 min-h-[1.5em]">
               {displayText}
-              <span 
-                className={`inline-block w-0.5 h-6 sm:h-8 ml-1 bg-primary transition-opacity duration-100 ${showCursor ? 'opacity-100' : 'opacity-0'}`}
-              />
             </h2>
           </div>
 
           {/* Main name */}
-          <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold mb-4 sm:mb-6 transition-all duration-700 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h1
+            ref={nameRef}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold mb-4 sm:mb-6 leading-[1.15] pb-2 inline-flex items-end justify-center gap-2 sm:gap-3 max-w-full"
+          >
             <span className="text-gradient">Mujtaba Khan</span>
+            <span className="animate-wave" aria-hidden="true">👋</span>
+            <span
+              aria-hidden="true"
+              className={`inline-block w-[0.06em] h-[0.78em] ml-1 bg-primary self-center transition-opacity duration-100 ${showCursor ? 'opacity-100' : 'opacity-0'}`}
+            />
           </h1>
 
           {/* Title */}
-          <div className={`mb-6 sm:mb-8 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div ref={titleRef} className="mb-6 sm:mb-8">
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/70 font-light px-2">
-              Senior iOS Developer <span className="hidden sm:inline">|</span> <span className="block sm:inline">Swift & SwiftUI Specialist</span>
+              iOS Developer <span className="hidden sm:inline">|</span> <span className="block sm:inline">Swift & SwiftUI Specialist</span>
             </p>
           </div>
 
           {/* Description */}
-          <p className={`max-w-2xl mx-auto text-sm sm:text-base lg:text-lg text-white/60 mb-8 sm:mb-10 leading-relaxed px-4 transition-all duration-700 delay-450 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            8+ years crafting exceptional mobile experiences. I transform ideas into elegant, 
+          <p ref={descRef} className="max-w-2xl mx-auto text-sm sm:text-base lg:text-lg text-white/60 mb-8 sm:mb-10 leading-relaxed px-4">
+            8+ years crafting exceptional mobile experiences. I transform ideas into elegant,
             performant iOS applications that users love.
           </p>
 
@@ -114,31 +160,20 @@ export default function Hero() {
           {/* Stats */}
           <div className={`mt-12 sm:mt-16 grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8 max-w-3xl mx-auto transition-all duration-700 delay-750 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {[
-              { value: '8+', label: 'Years Experience' },
-              { value: '15+', label: 'Apps Uploaded' },
-              { value: '100%', label: 'Commitment' },
+              { end: 8, suffix: '+', label: 'Years Experience' },
+              { end: 15, suffix: '+', label: 'Apps Uploaded' },
+              { end: 100, suffix: '%', label: 'Commitment' },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-gradient mb-1">
-                  {stat.value}
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-gradient mb-1 tabular-nums">
+                  <AnimatedNumber end={stat.end} suffix={stat.suffix} trigger={isVisible} />
                 </div>
-                <div className="text-xs sm:text-sm text-white/50">{stat.label}</div>
+                <div className="text-xs sm:text-sm text-white/70">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className={`absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 transition-all duration-700 delay-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <a
-            href="#about"
-            onClick={(e) => handleNavClick(e, '#about')}
-            className="flex flex-col items-center text-white/40 hover:text-white/70 transition-colors animate-bounce"
-          >
-            <span className="text-xs sm:text-sm mb-1">Scroll Down</span>
-            <ArrowDown className="w-4 h-4 sm:w-5 sm:h-5" />
-          </a>
-        </div>
       </div>
     </section>
   );

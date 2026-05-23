@@ -93,13 +93,13 @@ export default function Experience() {
         <div
           className={`text-center mb-10 sm:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+          <span data-aos="fade-up" className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-4 sm:mb-6">
             Career Journey
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white mb-3 sm:mb-4">
+          <h2 data-aos="fade-up" data-aos-delay="80" className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white mb-3 sm:mb-4">
             Work <span className="text-gradient">Experience</span>
           </h2>
-          <p className="text-white/60 max-w-2xl mx-auto text-sm sm:text-base px-4">
+          <p data-aos="fade-up" data-aos-delay="160" className="text-white/75 max-w-2xl mx-auto text-sm sm:text-base px-4">
             My professional journey as an iOS developer
           </p>
         </div>
@@ -114,8 +114,10 @@ export default function Experience() {
             {experiences.map((exp, index) => (
               <div
                 key={exp.id}
-                className={`relative transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-                style={{ transitionDelay: `${200 + index * 150}ms` }}
+                data-aos={index % 2 === 0 ? 'fade-left' : 'fade-right'}
+                data-aos-delay={100 + index * 100}
+                data-aos-duration="900"
+                className="relative"
               >
                 {/* Timeline Dot - hidden on mobile */}
                 <div className="hidden md:flex absolute left-1/2 w-4 h-4 rounded-full bg-gradient-to-r from-primary to-accent transform -translate-x-1/2 z-10 items-center justify-center">
@@ -137,7 +139,7 @@ export default function Experience() {
                     </div>
 
                     {/* Meta Info */}
-                    <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-3 sm:mb-4 text-xs sm:text-sm text-white/50">
+                    <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-3 sm:mb-4 text-xs sm:text-sm text-white/70">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
                         {exp.period}
@@ -158,7 +160,7 @@ export default function Experience() {
                       {exp.achievements.map((achievement, i) => (
                         <div 
                           key={i}
-                          className="flex items-start gap-2 text-xs sm:text-sm text-white/60"
+                          className="flex items-start gap-2 text-xs sm:text-sm text-white/75"
                         >
                           <span className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
                           <span>{achievement}</span>

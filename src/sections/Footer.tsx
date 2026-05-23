@@ -20,7 +20,7 @@ export default function Footer() {
           </div>
 
           {/* Tagline */}
-          <div className="flex items-center gap-1.5 sm:gap-2 text-white/50 text-xs sm:text-sm order-2 sm:order-3">
+          <div className="flex items-center gap-1.5 sm:gap-2 text-white/70 text-xs sm:text-sm order-2 sm:order-3">
             <span>Crafted with</span>
             <span className="animate-pulse">
               <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-red-500 fill-red-500" />
@@ -39,7 +39,7 @@ export default function Footer() {
                 e.preventDefault();
                 document.querySelector(`#${link.toLowerCase()}`)?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="text-white/40 hover:text-white transition-colors"
+              className="text-white/65 hover:text-white transition-colors"
             >
               {link}
             </a>
