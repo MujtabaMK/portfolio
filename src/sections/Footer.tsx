@@ -6,17 +6,14 @@ export default function Footer() {
   return (
     <footer className="relative py-8 sm:py-12 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-3 items-center gap-4 sm:gap-6">
-          {/* Spacer (keeps copyright truly centered) */}
-          <div className="hidden sm:block" />
-
-          {/* Copyright — centered */}
-          <p className="text-white/60 text-xs sm:text-sm text-center order-1 sm:order-2">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+          {/* Copyright */}
+          <p className="text-white/85 text-xs sm:text-sm font-semibold">
             © {currentYear} Mujtaba Khan. All rights reserved.
           </p>
 
           {/* Tagline */}
-          <div className="flex items-center justify-center sm:justify-end gap-1.5 sm:gap-2 text-white/70 text-xs sm:text-sm order-2 sm:order-3">
+          <div className="flex items-center gap-1.5 sm:gap-2 text-white/70 text-xs sm:text-sm">
             <span>Crafted with</span>
             <span className="animate-pulse">
               <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-red-500 fill-red-500" />

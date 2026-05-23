@@ -54,10 +54,10 @@ export default function Navigation({ scrollY }: NavigationProps) {
             <img
               src={logoMhk}
               alt="MHK"
-              className="w-11 h-11 sm:w-12 sm:h-12 object-contain"
+              className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
               style={{
                 filter:
-                  'invert(1) hue-rotate(180deg) brightness(1.05) contrast(1.1) drop-shadow(0 0 12px rgba(124, 58, 237, 0.35))',
+                  'invert(1) hue-rotate(180deg) brightness(1.45) contrast(1.25) saturate(1.2) drop-shadow(0 0 18px rgba(124, 58, 237, 0.6))',
               }}
             />
           </a>
