@@ -23,8 +23,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'mujtabaulhasankhan@rediffmail.com',
-    href: 'mailto:mujtabaulhasankhan@rediffmail.com',
+    value: 'mujtabakhanakola@gmail.com',
+    href: 'mailto:mujtabakhanakola@gmail.com',
     accent: 'text-primary',
   },
   {
