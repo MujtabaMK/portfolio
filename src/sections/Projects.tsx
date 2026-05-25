@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ExternalLink, X } from 'lucide-react';
+import { ExternalLink, X, Globe, Sparkles, Apple, Smartphone } from 'lucide-react';
 
 const GithubIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -7,6 +7,7 @@ const GithubIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
   </svg>
 );
 // ===== IMPORT IMAGES (REQUIRED FOR GITHUB PAGES) =====
+import coreSyncGo from '../assets/images/project-coresyncgo.png';
 import upgradLiving from '../assets/images/project-upgrad-living.jpg';
 import atlasVMS from '../assets/images/project-atlas-vms.jpg';
 import atlasHR from '../assets/images/project-atlas-hr.jpg';
@@ -16,74 +17,102 @@ import atlasBuzz from '../assets/images/project-atlas-buzz.jpg';
 import employeeConnect from '../assets/images/project-employee-connect.jpg';
 import teamsFM from '../assets/images/project-teams-fm.jpg';
 
-const projects = [
+type ProjectLink = { label: string; href: string; kind: 'website' | 'appstore' | 'playstore' };
+type Project = {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  tech: string[];
+  company: string;
+  color: string;
+  featured?: boolean;
+  links?: ProjectLink[];
+};
+
+const projects: Project[] = [
   {
     id: 1,
-    title: 'Upgrad Living',
-    description: 'The Hostel Management App is a digital platform that helps students manage hostel activities easily from their mobile device. It allows secure fee payments, room booking, and viewing roommate information in one place. Students can also book services like gym sessions and healthcare appointments without visiting the office. The app improves communication, reduces paperwork, and makes hostel living more organized and convenient.',
-    image: upgradLiving,
-    tech: ['SwiftUI', 'User Defaults', 'REST APIs', 'JSON Decoder'],
-    company: 'upGrad',
-    color: 'from-purple-500 to-pink-500',
+    title: 'CoreSyncGo',
+    description: 'My own indie product — an all-in-one productivity & wellness hub for iOS and Android. Built end-to-end in Flutter, it unifies tasks, password vault (biometric), OCR document scanning, QR/barcode generation, fitness & habit tracking, food logging, and voice translation in 20+ languages — with real-time cloud sync across devices. Shipped to both the App Store and Google Play.',
+    image: coreSyncGo,
+    tech: ['Flutter', 'Dart', 'Firebase', 'Cloud Sync', 'Biometric Auth', 'OCR', 'Material 3'],
+    company: 'Personal Product',
+    color: 'from-indigo-500 via-purple-500 to-pink-500',
+    featured: true,
+    links: [
+      { label: 'Website', href: 'https://coresyncgo.com/', kind: 'website' },
+      { label: 'App Store', href: 'https://apps.apple.com/us/app/coresync-go/id6761988704', kind: 'appstore' },
+      { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.mujtaba.coresync', kind: 'playstore' },
+    ],
   },
   {
     id: 2,
-    title: 'ATLAS VMS',
-    description: 'The Visitor Management System for the ATLAS campus front office digitally records and manages all visitor entries and walk-in leads. It provides complete visitor details, visit purpose, and history in a centralized dashboard. The system helps staff track, monitor, and analyze incoming leads efficiently. This improves security, reduces manual paperwork, and streamlines front office operations.',
-    image: atlasVMS,
-    tech: ['SwiftUI', 'URLSession', 'JSON Decoder', 'User Defaults'],
-    company: 'upGrad',
-    color: 'from-blue-500 to-cyan-500',
-  },
-  {
-    id: 3,
     title: 'ATLAS HR App',
-    description: 'The Employee-Manager Interaction App enables seamless communication between employees and managers in a single platform. It allows attendance tracking, timesheet submission, and leave management digitally. Managers can monitor daily activities and work progress in real time. The system improves transparency, accountability, and overall workforce productivity.',
+    description: 'Employee–manager interaction platform for upGrad. Built attendance tracking, timesheet submission, leave management and real-time activity monitoring — replacing scattered spreadsheets with a single iOS app and improving transparency across teams.',
     image: atlasHR,
     tech: ['Swift', 'Core Data', 'Firebase', 'Alamofire'],
     company: 'upGrad',
     color: 'from-green-500 to-emerald-500',
   },
   {
-    id: 4,
+    id: 3,
     title: 'ATLAS Admin',
-    description: 'The ATLAS Admin Management System is a centralized platform designed to manage administrative operations efficiently. It provides dashboards with admission reports, fee information, and student count analytics. Administrators can monitor institutional data and generate reports in real time. The system enhances decision-making, reduces manual work, and improves operational accuracy.',
+    description: 'Centralized admin platform with dashboards for admission reports, fee information and student-count analytics. Administrators can monitor institutional data and generate reports in real time, replacing manual reporting workflows.',
     image: isuAdmin,
     tech: ['Swift', 'User Defaults', 'Alamofire', 'SwiftyJSON'],
     company: 'Innovation Trust',
     color: 'from-orange-500 to-red-500',
   },
   {
+    id: 4,
+    title: 'ATLAS VMS',
+    description: 'Visitor Management System for the ATLAS campus front office. Digitally records visitor entries and walk-in leads with full history in a centralized dashboard — improving security, eliminating paperwork and streamlining lead tracking.',
+    image: atlasVMS,
+    tech: ['SwiftUI', 'URLSession', 'JSON Decoder', 'User Defaults'],
+    company: 'upGrad',
+    color: 'from-blue-500 to-cyan-500',
+  },
+  {
     id: 5,
+    title: 'Upgrad Living',
+    description: 'Hostel management app letting students handle fee payments, room booking, roommate info, gym sessions and healthcare appointments from their phone — reducing front-desk visits and paperwork.',
+    image: upgradLiving,
+    tech: ['SwiftUI', 'User Defaults', 'REST APIs', 'JSON Decoder'],
+    company: 'upGrad',
+    color: 'from-purple-500 to-pink-500',
+  },
+  {
+    id: 6,
     title: 'Future Tech App',
-    description: 'The Faculty Attendance App for ATLAS schools enables digital attendance marking with a built-in payment system. It automatically syncs attendance records and payment data in real time. Faculty and administrators can track records without manual updates. The app improves accuracy, reduces paperwork, and streamlines school operations.',
+    description: 'Faculty attendance app for ATLAS schools with an integrated payment system. Attendance and payment data sync in real time, reducing manual updates and streamlining school operations.',
     image: futureTech,
     tech: ['Swift', 'Razorpay', 'Cashfree', 'GrayQuest'],
     company: 'Innovation Trust',
     color: 'from-teal-500 to-blue-500',
   },
   {
-    id: 6,
+    id: 7,
     title: 'ATLAS Buzz',
-    description: 'The Marketing and Admission App for Atlas SkillTech University helps students explore programs and apply easily. It includes MCQ entrance tests, secure fee payments, and informative campus videos. Applicants can complete the admission process digitally in one place. The app simplifies admissions and improves student engagement.',
+    description: 'Marketing & admission app for Atlas SkillTech University. Students browse programs, take MCQ entrance tests, watch campus videos and pay fees in one place — completing admission entirely on mobile.',
     image: atlasBuzz,
     tech: ['Swift', 'Core Data', 'Payment APIs', 'Firebase'],
     company: 'Dice Acceleration',
     color: 'from-red-500 to-pink-500',
   },
   {
-    id: 7,
+    id: 8,
     title: 'Employee Connect',
-    description: 'The Employee Empowerment Platform enables employees to participate in decisions, share suggestions, and provide reviews openly. It supports bottom-to-top communication, ensuring every voice reaches management. Leaders gain insights directly from team feedback. The platform promotes transparency, engagement, and a collaborative workplace culture.',
+    description: 'Employee empowerment platform enabling bottom-up communication — suggestions, reviews and feedback flow directly from employees to leadership, promoting transparency and engagement.',
     image: employeeConnect,
     tech: ['Objective-C', 'Core Data', 'NSUserDefaults', 'FCM'],
     company: 'Hubmatrix Technologies',
     color: 'from-indigo-500 to-purple-500',
   },
   {
-    id: 8,
+    id: 9,
     title: 'TEAMS FM',
-    description: 'The Facility Management Solution helps organizations manage budgets, assets, and maintenance operations in one system. It tracks schedules, service requests, and resource utilization efficiently. Administrators can monitor performance and productivity in real time. The solution improves planning, reduces costs, and streamlines facility operations.',
+    description: 'Facility management solution covering budgets, assets, maintenance schedules and service requests. Administrators monitor performance and resource utilization in real time, improving planning and reducing costs.',
     image: teamsFM,
     tech: ['Objective-C', 'XML/JSON', 'Firebase', 'Core Data'],
     company: 'Hubmatrix Technologies',
@@ -128,7 +157,7 @@ export default function Projects() {
             Featured <span className="text-gradient">Projects</span>
           </h2>
           <p data-aos="fade-up" data-aos-delay="160" className="text-white/75 max-w-2xl mx-auto text-sm sm:text-base px-4">
-            A selection of my recent work showcasing iOS development expertise
+            16 production mobile apps shipped — 1 indie product I own end-to-end, 15 built for upGrad, Atlas SkillTech and Hubmatrix.
           </p>
         </div>
 
@@ -139,22 +168,28 @@ export default function Projects() {
               key={project.id}
               data-aos="fade-up"
               data-aos-delay={50 + (index % 4) * 80}
-              className="group relative glass rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer hover:-translate-y-2 transition-all duration-500"
+              className={`group relative glass rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer hover:-translate-y-2 transition-all duration-500 ${project.featured ? 'ring-1 ring-primary/40 sm:col-span-2 lg:col-span-1 xl:col-span-2' : ''}`}
               onClick={() => setSelectedProject(project)}
             >
               {/* Image */}
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className={`relative ${project.featured ? 'aspect-[16/10]' : 'aspect-[4/3]'} overflow-hidden ${project.featured ? 'bg-gradient-to-br from-indigo-500/15 via-purple-500/15 to-pink-500/15' : ''}`}>
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className={`w-full h-full transition-transform duration-500 group-hover:scale-110 ${project.featured ? 'object-contain p-6 sm:p-10' : 'object-cover'}`}
                 />
-                
+
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
-                
-                {/* Company Badge */}
-                <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
+                <div className={`absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent transition-opacity duration-300 ${project.featured ? 'opacity-30 group-hover:opacity-50' : 'opacity-60 group-hover:opacity-80'}`} />
+
+                {/* Featured / Company Badge */}
+                <div className="absolute top-3 sm:top-4 left-3 sm:left-4 flex items-center gap-2">
+                  {project.featured && (
+                    <span className="inline-flex items-center gap-1 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold bg-white text-primary shadow-lg">
+                      <Sparkles className="w-3 h-3" />
+                      MY PRODUCT
+                    </span>
+                  )}
                   <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium bg-gradient-to-r ${project.color} text-white`}>
                     {project.company}
                   </span>
@@ -168,29 +203,50 @@ export default function Projects() {
 
               {/* Content */}
               <div className="p-4 sm:p-6">
-                <h3 className="text-base sm:text-lg font-display font-bold text-white mb-1.5 sm:mb-2 group-hover:text-gradient transition-colors line-clamp-1">
+                <h3 className={`font-display font-bold text-white mb-1.5 sm:mb-2 group-hover:text-gradient transition-colors line-clamp-1 ${project.featured ? 'text-lg sm:text-xl lg:text-2xl' : 'text-base sm:text-lg'}`}>
                   {project.title}
                 </h3>
-                <p className="text-white/75 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2">
+                <p className={`text-white/75 mb-3 sm:mb-4 ${project.featured ? 'text-sm sm:text-base line-clamp-3' : 'text-xs sm:text-sm line-clamp-2'}`}>
                   {project.description}
                 </p>
-                
+
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                  {project.tech.slice(0, 2).map((tech) => (
-                    <span 
+                  {project.tech.slice(0, project.featured ? 4 : 2).map((tech) => (
+                    <span
                       key={tech}
                       className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-white/5 text-white/70 text-[10px] sm:text-xs border border-white/10"
                     >
                       {tech}
                     </span>
                   ))}
-                  {project.tech.length > 2 && (
+                  {project.tech.length > (project.featured ? 4 : 2) && (
                     <span className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-white/5 text-white/70 text-[10px] sm:text-xs border border-white/10">
-                      +{project.tech.length - 2}
+                      +{project.tech.length - (project.featured ? 4 : 2)}
                     </span>
                   )}
                 </div>
+
+                {/* Inline external links (featured projects only) */}
+                {project.featured && project.links && (
+                  <div className="mt-4 flex flex-wrap gap-2" onClick={(e) => e.stopPropagation()}>
+                    {project.links.map((link) => {
+                      const Icon = link.kind === 'appstore' ? Apple : link.kind === 'playstore' ? Smartphone : Globe;
+                      return (
+                        <a
+                          key={link.label}
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/15 text-white text-xs font-medium border border-white/15 transition-colors"
+                        >
+                          <Icon className="w-3.5 h-3.5" />
+                          {link.label}
+                        </a>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             </div>
           ))}
@@ -257,10 +313,10 @@ export default function Projects() {
               </p>
 
               <div className="mb-5 sm:mb-6">
-                <h4 className="text-xs sm:text-sm font-semibold text-white/50 mb-2 sm:mb-3">TECHNOLOGIES</h4>
+                <h4 className="text-xs sm:text-sm font-semibold text-white/75 mb-2 sm:mb-3 tracking-wider">TECHNOLOGIES</h4>
                 <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {selectedProject.tech.map((tech) => (
-                    <span 
+                    <span
                       key={tech}
                       className="px-2.5 sm:px-4 py-1 sm:py-2 rounded-full bg-white/5 text-white text-xs sm:text-sm border border-white/10"
                     >
@@ -269,6 +325,30 @@ export default function Projects() {
                   ))}
                 </div>
               </div>
+
+              {selectedProject.links && selectedProject.links.length > 0 && (
+                <div className="mb-5 sm:mb-6">
+                  <h4 className="text-xs sm:text-sm font-semibold text-white/75 mb-2 sm:mb-3 tracking-wider">LIVE LINKS</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.links.map((link) => {
+                      const Icon = link.kind === 'appstore' ? Apple : link.kind === 'playstore' ? Smartphone : Globe;
+                      return (
+                        <a
+                          key={link.label}
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/15 text-white text-xs sm:text-sm font-medium border border-white/15 transition-colors"
+                        >
+                          <Icon className="w-4 h-4" />
+                          {link.label}
+                          <ExternalLink className="w-3 h-3 opacity-60" />
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
 
               <button
                 onClick={() => setSelectedProject(null)}

@@ -10,6 +10,7 @@ import Navigation from './sections/Navigation';
 import Hero from './sections/Hero';
 import About from './sections/About';
 import Skills from './sections/Skills';
+import Services from './sections/Services';
 import Projects from './sections/Projects';
 import Experience from './sections/Experience';
 import Contact from './sections/Contact';
@@ -136,6 +137,7 @@ function App() {
         <Hero />
         <About />
         <Skills />
+        <Services />
         <Projects />
         <Experience />
         <Contact />

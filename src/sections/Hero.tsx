@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { Download, ExternalLink } from 'lucide-react';
+import { Download, ExternalLink, Mail } from 'lucide-react';
 import { gsap } from 'gsap';
 import resume from "../assets/files/Mujtaba_Khan_iOS_Developer.pdf";
 
@@ -125,15 +125,18 @@ export default function Hero() {
 
           {/* Title */}
           <div ref={titleRef} className="mb-6 sm:mb-8">
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/70 font-light px-2">
-              iOS Developer <span className="hidden sm:inline">|</span> <span className="block sm:inline">Swift & SwiftUI Specialist</span>
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/85 font-light px-2">
+              Senior iOS Engineer <span className="hidden sm:inline text-white/40">·</span> <span className="block sm:inline">Flutter Developer</span>
+            </p>
+            <p className="mt-2 text-xs sm:text-sm md:text-base text-white/55 font-mono tracking-wide">
+              Swift · SwiftUI · Flutter · Firebase
             </p>
           </div>
 
           {/* Description */}
-          <p ref={descRef} className="max-w-2xl mx-auto text-sm sm:text-base lg:text-lg text-white/60 mb-8 sm:mb-10 leading-relaxed px-4">
-            8+ years crafting exceptional mobile experiences. I transform ideas into elegant,
-            performant iOS applications that users love.
+          <p ref={descRef} className="max-w-2xl mx-auto text-sm sm:text-base lg:text-lg text-white/75 mb-8 sm:mb-10 leading-relaxed px-4">
+            I build production mobile apps that scale — from enterprise iOS at upGrad to my own
+            indie product, <a href="https://coresyncgo.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent transition-colors underline-offset-4 hover:underline">CoreSyncGo</a>, live on the App Store and Google Play.
           </p>
 
           {/* CTA Buttons */}
@@ -141,28 +144,37 @@ export default function Hero() {
             <a
               href="#projects"
               onClick={(e) => handleNavClick(e, '#projects')}
-              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-primary to-accent text-white font-semibold text-sm sm:text-base flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-transform"
+              className="w-full sm:w-auto px-6 sm:px-7 py-3 sm:py-4 rounded-full bg-gradient-to-r from-primary to-accent text-white font-semibold text-sm sm:text-base flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-transform shadow-lg shadow-primary/30"
             >
               View My Work
               <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
             </a>
 
             <a
-  href={resume}
-  download="Mujtaba_Khan_iOS_Developer.pdf"
-  className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full border border-white/20 text-white font-semibold text-sm sm:text-base flex items-center justify-center gap-2 hover:bg-white/5 transition-colors hover:scale-105 active:scale-95"
->
-  <Download className="w-4 h-4 sm:w-5 sm:h-5" />
-  Download Resume
-</a>
+              href="#contact"
+              onClick={(e) => handleNavClick(e, '#contact')}
+              className="w-full sm:w-auto px-6 sm:px-7 py-3 sm:py-4 rounded-full bg-white/[0.07] border border-white/20 text-white font-semibold text-sm sm:text-base flex items-center justify-center gap-2 hover:bg-white/10 transition-colors hover:scale-105 active:scale-95"
+            >
+              <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
+              Get in touch
+            </a>
+
+            <a
+              href={resume}
+              download="Mujtaba_Khan_iOS_Developer.pdf"
+              className="w-full sm:w-auto px-6 sm:px-7 py-3 sm:py-4 rounded-full border border-white/15 text-white/85 font-medium text-sm sm:text-base flex items-center justify-center gap-2 hover:bg-white/5 transition-colors hover:scale-105 active:scale-95"
+            >
+              <Download className="w-4 h-4 sm:w-5 sm:h-5" />
+              Résumé
+            </a>
           </div>
 
           {/* Stats */}
-          <div className={`mt-12 sm:mt-16 grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8 max-w-3xl mx-auto transition-all duration-700 delay-750 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`mt-12 sm:mt-16 grid grid-cols-3 gap-3 sm:gap-8 max-w-3xl mx-auto transition-all duration-700 delay-750 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {[
               { end: 8, suffix: '+', label: 'Years Experience' },
-              { end: 15, suffix: '+', label: 'Apps Uploaded' },
-              { end: 100, suffix: '%', label: 'Commitment' },
+              { end: 16, suffix: '+', label: 'Apps Shipped' },
+              { end: 1, suffix: '', label: 'Indie Product' },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-gradient mb-1 tabular-nums">

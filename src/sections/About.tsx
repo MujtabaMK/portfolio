@@ -82,20 +82,23 @@ export default function About() {
               <span className="text-gradient block">Experiences</span>
             </h2>
 
-            <div className={`space-y-3 sm:space-y-4 text-sm sm:text-base text-white/70 leading-relaxed mb-6 sm:mb-8 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <p>
-                I'm <span className="text-white font-semibold">Mujtaba Khan</span>, a passionate iOS developer
-                with over 8 years of experience building beautiful, functional mobile applications.
+            <div className={`text-sm sm:text-base lg:text-lg text-white/80 leading-relaxed mb-6 sm:mb-8 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <p className="mb-5">
+                <span className="text-white font-semibold">Mujtaba Khan</span> — Senior iOS Engineer with 8+ years
+                shipping production mobile apps across edtech, HR, and consumer. Currently building enterprise iOS
+                at upGrad and indie cross-platform at <a href="https://coresyncgo.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent transition-colors underline-offset-4 hover:underline">CoreSyncGo</a>.
               </p>
-              <p>
-                My expertise spans <span className="text-white">Swift</span>, <span className="text-white">SwiftUI</span>, 
-                and <span className="text-white">Objective-C</span>, with a deep understanding of iOS architecture 
-                patterns, performance optimization, and user experience design.
-              </p>
-              <p>
-                When I'm not coding, you'll find me exploring new technologies, contributing to open-source 
-                projects, or mentoring aspiring developers.
-              </p>
+              <div data-aos="fade-up" data-aos-delay="200">
+                <p className="text-xs sm:text-sm font-mono uppercase tracking-[0.18em] text-white/55 mb-3">Stack</p>
+                <ul className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-sm sm:text-base text-white/85">
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-primary" /> Swift &amp; SwiftUI</li>
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-primary" /> Flutter &amp; Dart</li>
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-primary" /> Objective-C</li>
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-primary" /> Firebase &amp; REST</li>
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-primary" /> Architecture (MVVM, VIPER, Clean)</li>
+                  <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-primary" /> App Store &amp; Play Store deploys</li>
+                </ul>
+              </div>
             </div>
 
             {/* Stats */}
