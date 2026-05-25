@@ -126,7 +126,7 @@ export default function Hero() {
           {/* Title */}
           <div ref={titleRef} className="mb-6 sm:mb-8">
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/85 font-light px-2">
-              Senior iOS Engineer <span className="hidden sm:inline text-white/40">·</span> <span className="block sm:inline">Flutter Developer</span>
+              iOS Developer <span className="hidden sm:inline text-white/40">·</span> <span className="block sm:inline">Flutter Developer</span>
             </p>
             <p className="mt-2 text-xs sm:text-sm md:text-base text-white/55 font-mono tracking-wide">
               Swift · SwiftUI · Flutter · Firebase

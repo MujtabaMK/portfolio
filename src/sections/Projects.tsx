@@ -7,7 +7,7 @@ const GithubIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
   </svg>
 );
 // ===== IMPORT IMAGES (REQUIRED FOR GITHUB PAGES) =====
-import coreSyncGo from '../assets/images/project-coresyncgo.png';
+import coreSyncGo from '../assets/images/project-coresyncgo.jpg';
 import atlasDashboard from '../assets/images/project-atlas-dashboard.jpg';
 import upgradLiving from '../assets/images/project-upgrad-living.jpg';
 import atlasVMS from '../assets/images/project-atlas-vms.jpg';
@@ -187,11 +187,11 @@ export default function Projects() {
               onClick={() => setSelectedProject(project)}
             >
               {/* Image */}
-              <div className={`relative ${project.featured ? 'aspect-[16/10]' : 'aspect-[4/3]'} overflow-hidden ${project.featured ? 'bg-gradient-to-br from-indigo-500/15 via-purple-500/15 to-pink-500/15' : ''}`}>
+              <div className={`relative ${project.featured ? 'aspect-[16/10]' : 'aspect-[4/3]'} overflow-hidden ${project.featured ? 'bg-[#f5f4f8]' : ''}`}>
                 <img
                   src={project.image}
                   alt={project.title}
-                  className={`w-full h-full transition-transform duration-500 group-hover:scale-110 ${project.featured ? 'object-contain p-6 sm:p-10' : 'object-cover'}`}
+                  className={`w-full h-full transition-transform duration-500 group-hover:scale-105 ${project.featured ? 'object-contain' : 'object-cover'}`}
                 />
 
                 {/* Overlay */}
