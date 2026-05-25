@@ -79,7 +79,7 @@ export default function Contact() {
 
   return (
     <section id="contact" ref={sectionRef} className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div
           className={`text-center mb-12 sm:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
@@ -111,7 +111,7 @@ export default function Contact() {
                 <item.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${item.accent}`} />
               </div>
               <div className="text-xs sm:text-sm text-white/70 mb-1">{item.label}</div>
-              <div className={`text-white text-sm sm:text-base font-medium group-hover:${item.accent} transition-colors break-words`}>
+              <div className={`text-white text-xs sm:text-sm font-medium group-hover:${item.accent} transition-colors whitespace-nowrap overflow-hidden text-ellipsis`} title={item.value}>
                 {item.value}
               </div>
             </a>
