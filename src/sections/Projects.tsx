@@ -256,9 +256,9 @@ export default function Projects() {
                   )}
                 </div>
 
-                {/* Inline external links (featured projects only) */}
-                {project.featured && project.links && (
-                  <div className="mt-4 flex flex-wrap gap-2" onClick={(e) => e.stopPropagation()}>
+                {/* Inline external links — shown on every card that has links */}
+                {project.links && project.links.length > 0 && (
+                  <div className="mt-3 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2" onClick={(e) => e.stopPropagation()}>
                     {project.links.map((link) => {
                       const Icon = link.kind === 'appstore' ? Apple : link.kind === 'playstore' ? Smartphone : Globe;
                       return (
@@ -267,7 +267,7 @@ export default function Projects() {
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/15 text-white text-xs font-medium border border-white/15 transition-colors"
+                          className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-[11px] sm:text-xs font-medium border border-white/15 transition-colors"
                         >
                           <Icon className="w-3.5 h-3.5" />
                           {link.label}
