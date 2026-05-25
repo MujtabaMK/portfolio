@@ -24,6 +24,7 @@ type Project = {
   title: string;
   description: string;
   image: string;
+  imageBg?: string;
   tech: string[];
   company: string;
   color: string;
@@ -38,6 +39,7 @@ const projects: Project[] = [
     title: 'CoreSyncGo',
     description: 'My own indie product — an all-in-one productivity & wellness hub for iOS and Android. Built end-to-end in Flutter, it unifies tasks, password vault (biometric), OCR document scanning, QR/barcode generation, fitness & habit tracking, food logging, and voice translation in 20+ languages — with real-time cloud sync across devices. Shipped to both the App Store and Google Play.',
     image: coreSyncGo,
+    imageBg: '#151515',
     tech: ['Flutter', 'Dart', 'Firebase', 'Cloud Sync', 'Biometric Auth', 'OCR', 'Material 3'],
     company: 'Personal Product',
     color: 'from-indigo-500 via-purple-500 to-pink-500',
@@ -55,6 +57,7 @@ const projects: Project[] = [
     description:
       'Cross-platform scheduling & productivity dashboard for ATLAS SkillTech University, built end-to-end in Flutter. Manages timetables, attendance, room and resource utilization analytics, and department-level performance reports — giving administrators operational insights from a single responsive app.',
     image: atlasDashboard,
+    imageBg: '#f5f4f8',
     tech: ['Flutter', 'Dart', 'REST APIs', 'Charts', 'Analytics'],
     company: 'upGrad',
     color: 'from-indigo-500 to-blue-500',
@@ -195,7 +198,10 @@ export default function Projects() {
               onClick={() => setSelectedProject(project)}
             >
               {/* Image */}
-              <div className={`relative ${project.featured ? 'aspect-[16/10]' : 'aspect-[4/3]'} overflow-hidden ${project.featured ? 'bg-[#f5f4f8]' : ''}`}>
+              <div
+                className={`relative ${project.featured ? 'aspect-[16/10]' : 'aspect-[4/3]'} overflow-hidden`}
+                style={project.featured ? { backgroundColor: project.imageBg || '#f5f4f8' } : undefined}
+              >
                 <img
                   src={project.image}
                   alt={project.title}
@@ -313,15 +319,15 @@ export default function Projects() {
             {/* Scrollable content area */}
             <div className="overflow-y-auto overscroll-contain" data-lenis-prevent>
               {/* Modal Image */}
-              <div className={`relative ${selectedProject.featured ? 'aspect-[16/10] bg-[#f5f4f8]' : 'aspect-video'}`}>
+              <div
+                className="relative aspect-[16/10]"
+                style={{ backgroundColor: selectedProject.imageBg || (selectedProject.featured ? '#f5f4f8' : '#0b0b14') }}
+              >
                 <img
                   src={selectedProject.image}
                   alt={selectedProject.title}
-                  className={`w-full h-full ${selectedProject.featured ? 'object-contain' : 'object-cover'}`}
+                  className="w-full h-full object-contain"
                 />
-                {!selectedProject.featured && (
-                  <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-                )}
               </div>
 
               {/* Modal Content */}
