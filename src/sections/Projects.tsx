@@ -324,18 +324,16 @@ export default function Projects() {
             onClick={(e) => e.stopPropagation()}
             className="relative max-w-2xl w-full glass rounded-2xl sm:rounded-3xl overflow-hidden animate-scale-in max-h-[85vh] flex flex-col"
           >
-            {/* Header strip — gives the close button its own safe zone above the image */}
-            <div className="relative flex-shrink-0 h-12 sm:h-14 bg-background/60 backdrop-blur-md flex items-center justify-end px-3 sm:px-4 border-b border-white/5">
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-black shadow-lg ring-2 ring-white/80 flex items-center justify-center hover:bg-gray-100 hover:scale-110 active:scale-95 transition-all"
-                aria-label="Close"
-              >
-                <X className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={3} />
-              </button>
-            </div>
+            {/* Close button — overlaid on the image at top-right */}
+            <button
+              onClick={() => setSelectedProject(null)}
+              className="absolute top-3 sm:top-4 right-3 sm:right-4 z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-black shadow-[0_4px_18px_rgba(0,0,0,0.45)] ring-2 ring-white/90 flex items-center justify-center hover:bg-gray-100 hover:scale-110 active:scale-95 transition-all"
+              aria-label="Close"
+            >
+              <X className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={3} />
+            </button>
 
-            {/* Scrollable content area */}
+            {/* Scrollable content area — image flows to the rounded top edge */}
             <div className="overflow-y-auto overscroll-contain" data-lenis-prevent>
               {/* Modal Image */}
               <div
