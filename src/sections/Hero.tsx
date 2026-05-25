@@ -135,8 +135,7 @@ export default function Hero() {
 
           {/* Description */}
           <p ref={descRef} className="max-w-2xl mx-auto text-sm sm:text-base lg:text-lg text-white/75 mb-8 sm:mb-10 leading-relaxed px-4">
-            I build production mobile apps that scale — from enterprise iOS at upGrad to my own
-            indie product, <a href="https://coresyncgo.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent transition-colors underline-offset-4 hover:underline">CoreSyncGo</a>, live on the App Store and Google Play.
+            I build production mobile apps that scale — Flutter and native iOS, from enterprise dashboards at upGrad to my own indie product <a href="https://coresyncgo.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent transition-colors underline-offset-4 hover:underline">CoreSyncGo</a>, all live on the App Store and Google Play.
           </p>
 
           {/* CTA Buttons */}

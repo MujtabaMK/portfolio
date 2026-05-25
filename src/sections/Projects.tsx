@@ -8,6 +8,7 @@ const GithubIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
 );
 // ===== IMPORT IMAGES (REQUIRED FOR GITHUB PAGES) =====
 import coreSyncGo from '../assets/images/project-coresyncgo.png';
+import atlasDashboard from '../assets/images/project-atlas-dashboard.jpg';
 import upgradLiving from '../assets/images/project-upgrad-living.jpg';
 import atlasVMS from '../assets/images/project-atlas-vms.jpg';
 import atlasHR from '../assets/images/project-atlas-hr.jpg';
@@ -44,6 +45,20 @@ const projects: Project[] = [
       { label: 'Website', href: 'https://coresyncgo.com/', kind: 'website' },
       { label: 'App Store', href: 'https://apps.apple.com/us/app/coresync-go/id6761988704', kind: 'appstore' },
       { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.mujtaba.coresync', kind: 'playstore' },
+    ],
+  },
+  {
+    id: 10,
+    title: 'ATLAS Dashboard',
+    description:
+      'Cross-platform scheduling & productivity dashboard for ATLAS SkillTech University, built end-to-end in Flutter. Manages timetables, attendance, room and resource utilization analytics, and department-level performance reports — giving administrators operational insights from a single responsive app.',
+    image: atlasDashboard,
+    tech: ['Flutter', 'Dart', 'REST APIs', 'Charts', 'Analytics'],
+    company: 'upGrad',
+    color: 'from-indigo-500 to-blue-500',
+    featured: true,
+    links: [
+      { label: 'App Store', href: 'https://apps.apple.com/in/app/atlas-dashboard/id6760095449', kind: 'appstore' },
     ],
   },
   {
