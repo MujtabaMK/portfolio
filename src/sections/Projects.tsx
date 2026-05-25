@@ -28,6 +28,7 @@ type Project = {
   company: string;
   color: string;
   featured?: boolean;
+  myProduct?: boolean;
   links?: ProjectLink[];
 };
 
@@ -41,6 +42,7 @@ const projects: Project[] = [
     company: 'Personal Product',
     color: 'from-indigo-500 via-purple-500 to-pink-500',
     featured: true,
+    myProduct: true,
     links: [
       { label: 'Website', href: 'https://coresyncgo.com/', kind: 'website' },
       { label: 'App Store', href: 'https://apps.apple.com/us/app/coresync-go/id6761988704', kind: 'appstore' },
@@ -69,6 +71,7 @@ const projects: Project[] = [
     tech: ['Swift', 'Core Data', 'Firebase', 'Alamofire'],
     company: 'upGrad',
     color: 'from-green-500 to-emerald-500',
+    links: [{ label: 'App Store', href: 'https://apps.apple.com/in/app/atlas-hr-app/id1541340951', kind: 'appstore' }],
   },
   {
     id: 3,
@@ -76,8 +79,9 @@ const projects: Project[] = [
     description: 'Centralized admin platform with dashboards for admission reports, fee information and student-count analytics. Administrators can monitor institutional data and generate reports in real time, replacing manual reporting workflows.',
     image: isuAdmin,
     tech: ['Swift', 'User Defaults', 'Alamofire', 'SwiftyJSON'],
-    company: 'Innovation Trust',
+    company: 'upGrad',
     color: 'from-orange-500 to-red-500',
+    links: [{ label: 'App Store', href: 'https://apps.apple.com/in/app/atlas-admin/id1555197709', kind: 'appstore' }],
   },
   {
     id: 4,
@@ -87,6 +91,7 @@ const projects: Project[] = [
     tech: ['SwiftUI', 'URLSession', 'JSON Decoder', 'User Defaults'],
     company: 'upGrad',
     color: 'from-blue-500 to-cyan-500',
+    links: [{ label: 'App Store', href: 'https://apps.apple.com/in/app/atlas-vms/id6445847861', kind: 'appstore' }],
   },
   {
     id: 5,
@@ -96,15 +101,17 @@ const projects: Project[] = [
     tech: ['SwiftUI', 'User Defaults', 'REST APIs', 'JSON Decoder'],
     company: 'upGrad',
     color: 'from-purple-500 to-pink-500',
+    links: [{ label: 'App Store', href: 'https://apps.apple.com/in/app/upgrad-living/id6448984912', kind: 'appstore' }],
   },
   {
     id: 6,
-    title: 'Future Tech App',
+    title: 'ATLAS Tech App',
     description: 'Faculty attendance app for ATLAS schools with an integrated payment system. Attendance and payment data sync in real time, reducing manual updates and streamlining school operations.',
     image: futureTech,
     tech: ['Swift', 'Razorpay', 'Cashfree', 'GrayQuest'],
-    company: 'Innovation Trust',
+    company: 'upGrad',
     color: 'from-teal-500 to-blue-500',
+    links: [{ label: 'App Store', href: 'https://apps.apple.com/in/app/atlas-tech-app/id1187578170', kind: 'appstore' }],
   },
   {
     id: 7,
@@ -112,8 +119,9 @@ const projects: Project[] = [
     description: 'Marketing & admission app for Atlas SkillTech University. Students browse programs, take MCQ entrance tests, watch campus videos and pay fees in one place — completing admission entirely on mobile.',
     image: atlasBuzz,
     tech: ['Swift', 'Core Data', 'Payment APIs', 'Firebase'],
-    company: 'Dice Acceleration',
+    company: 'upGrad',
     color: 'from-red-500 to-pink-500',
+    links: [{ label: 'App Store', href: 'https://apps.apple.com/in/app/atlas-buzz/id1504409328', kind: 'appstore' }],
   },
   {
     id: 8,
@@ -199,7 +207,7 @@ export default function Projects() {
 
                 {/* Featured / Company Badge */}
                 <div className="absolute top-3 sm:top-4 left-3 sm:left-4 flex items-center gap-2">
-                  {project.featured && (
+                  {project.myProduct && (
                     <span className="inline-flex items-center gap-1 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold bg-white text-primary shadow-lg">
                       <Sparkles className="w-3 h-3" />
                       MY PRODUCT
@@ -291,28 +299,33 @@ export default function Projects() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-lg w-full glass rounded-2xl sm:rounded-3xl overflow-hidden animate-scale-in max-h-[90vh] overflow-y-auto"
+            className="relative max-w-lg w-full glass rounded-2xl sm:rounded-3xl overflow-hidden animate-scale-in max-h-[90vh] flex flex-col"
           >
-            {/* Close Button */}
+            {/* Close Button (stays in viewport while scrolling) */}
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-3 sm:top-4 right-3 sm:right-4 z-10 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+              className="absolute top-3 sm:top-4 right-3 sm:right-4 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/15 flex items-center justify-center hover:bg-black/60 transition-colors"
+              aria-label="Close"
             >
               <X className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
             </button>
 
-            {/* Modal Image */}
-            <div className="relative aspect-video">
-              <img
-                src={selectedProject.image}
-                alt={selectedProject.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-            </div>
+            {/* Scrollable content area */}
+            <div className="overflow-y-auto overscroll-contain" data-lenis-prevent>
+              {/* Modal Image */}
+              <div className={`relative ${selectedProject.featured ? 'aspect-[16/10] bg-[#f5f4f8]' : 'aspect-video'}`}>
+                <img
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  className={`w-full h-full ${selectedProject.featured ? 'object-contain' : 'object-cover'}`}
+                />
+                {!selectedProject.featured && (
+                  <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
+                )}
+              </div>
 
-            {/* Modal Content */}
-            <div className="p-5 sm:p-8">
+              {/* Modal Content */}
+              <div className="p-5 sm:p-8">
               <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
                 <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium bg-gradient-to-r ${selectedProject.color} text-white`}>
                   {selectedProject.company}
@@ -371,6 +384,7 @@ export default function Projects() {
               >
                 Close
               </button>
+              </div>
             </div>
           </div>
         </div>
