@@ -5,7 +5,7 @@ const experiences = [
   {
     id: 1,
     company: 'upGrad',
-    role: 'Senior iOS Developer',
+    role: 'iOS Developer',
     period: '2021 – Present',
     location: 'Mumbai, India',
     description: 'Leading iOS development for multiple applications including Upgrad Living, ATLAS VMS, and ATLAS HR App. Implementing SwiftUI, Core Data, and payment integrations.',
