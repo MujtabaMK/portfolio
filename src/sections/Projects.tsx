@@ -305,15 +305,15 @@ export default function Projects() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-lg w-full glass rounded-2xl sm:rounded-3xl overflow-hidden animate-scale-in max-h-[90vh] flex flex-col"
+            className="relative max-w-2xl w-full glass rounded-2xl sm:rounded-3xl overflow-hidden animate-scale-in max-h-[90vh] flex flex-col"
           >
-            {/* Close Button (stays in viewport while scrolling) */}
+            {/* Close Button — high-contrast so it's visible on any image bg */}
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-3 sm:top-4 right-3 sm:right-4 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/40 backdrop-blur-md border border-white/15 flex items-center justify-center hover:bg-black/60 transition-colors"
+              className="absolute top-3 sm:top-4 right-3 sm:right-4 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-black shadow-xl ring-2 ring-black/20 flex items-center justify-center hover:bg-white/90 hover:scale-105 active:scale-95 transition-all"
               aria-label="Close"
             >
-              <X className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+              <X className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={2.5} />
             </button>
 
             {/* Scrollable content area */}
