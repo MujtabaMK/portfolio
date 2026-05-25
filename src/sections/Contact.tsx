@@ -96,7 +96,7 @@ export default function Contact() {
         </div>
 
         {/* Contact Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mb-12">
           {contactInfo.map((item, index) => (
             <a
               key={item.label}
@@ -111,7 +111,7 @@ export default function Contact() {
                 <item.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${item.accent}`} />
               </div>
               <div className="text-xs sm:text-sm text-white/70 mb-1">{item.label}</div>
-              <div className={`text-white text-xs sm:text-sm font-medium group-hover:${item.accent} transition-colors whitespace-nowrap overflow-hidden text-ellipsis`} title={item.value}>
+              <div className={`text-white text-sm sm:text-base font-medium group-hover:${item.accent} transition-colors whitespace-nowrap overflow-hidden text-ellipsis`} title={item.value}>
                 {item.value}
               </div>
             </a>
