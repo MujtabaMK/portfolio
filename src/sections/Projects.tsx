@@ -327,7 +327,7 @@ export default function Projects() {
             {/* Close button — overlaid on the image at top-right */}
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-3 sm:top-4 right-3 sm:right-4 z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-black shadow-[0_4px_18px_rgba(0,0,0,0.45)] ring-2 ring-white/90 flex items-center justify-center hover:bg-gray-100 hover:scale-110 active:scale-95 transition-all"
+              className="absolute top-4 sm:top-5 right-4 sm:right-5 z-50 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-black shadow-[0_6px_22px_rgba(0,0,0,0.5)] ring-2 ring-white/90 flex items-center justify-center hover:bg-gray-100 hover:scale-110 active:scale-95 transition-all"
               aria-label="Close"
             >
               <X className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={3} />
