@@ -81,6 +81,7 @@ const projects: Project[] = [
     featured: true,
     links: [
       { label: 'App Store', href: 'https://apps.apple.com/in/app/atlas-dashboard/id6760095449', kind: 'appstore' },
+      { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.atlas.dashboard', kind: 'playstore' },
     ],
   },
   {
@@ -92,16 +93,6 @@ const projects: Project[] = [
     company: 'upGrad',
     color: 'from-green-500 to-emerald-500',
     links: [{ label: 'App Store', href: 'https://apps.apple.com/in/app/atlas-hr-app/id1541340951', kind: 'appstore' }],
-  },
-  {
-    id: 3,
-    title: 'ATLAS Admin',
-    description: 'Centralized admin platform with dashboards for admission reports, fee information and student-count analytics. Administrators can monitor institutional data and generate reports in real time, replacing manual reporting workflows.',
-    image: isuAdmin,
-    tech: ['Swift', 'User Defaults', 'Alamofire', 'SwiftyJSON'],
-    company: 'Innovation Trust',
-    color: 'from-orange-500 to-red-500',
-    links: [{ label: 'App Store', href: 'https://apps.apple.com/in/app/atlas-admin/id1555197709', kind: 'appstore' }],
   },
   {
     id: 4,
@@ -122,6 +113,16 @@ const projects: Project[] = [
     company: 'upGrad',
     color: 'from-purple-500 to-pink-500',
     links: [{ label: 'App Store', href: 'https://apps.apple.com/in/app/upgrad-living/id6448984912', kind: 'appstore' }],
+  },
+  {
+    id: 3,
+    title: 'ATLAS Admin',
+    description: 'Centralized admin platform with dashboards for admission reports, fee information and student-count analytics. Administrators can monitor institutional data and generate reports in real time, replacing manual reporting workflows.',
+    image: isuAdmin,
+    tech: ['Swift', 'User Defaults', 'Alamofire', 'SwiftyJSON'],
+    company: 'Innovation Trust',
+    color: 'from-orange-500 to-red-500',
+    links: [{ label: 'App Store', href: 'https://apps.apple.com/in/app/atlas-admin/id1555197709', kind: 'appstore' }],
   },
   {
     id: 6,
