@@ -8,9 +8,9 @@ const experiences = [
     role: 'iOS Developer',
     period: '2021 – Present',
     location: 'Mumbai, India',
-    description: 'Leading iOS development for multiple applications including Upgrad Living, ATLAS VMS, and ATLAS HR App. Implementing SwiftUI, Core Data, and payment integrations.',
+    description: 'Leading iOS development for multiple applications including ATLAS Dashboard, Upgrad Living, ATLAS VMS, and ATLAS HR App. Implementing SwiftUI, Flutter, Core Data, and payment integrations.',
     achievements: [
-      'Developed 3 major iOS applications from scratch',
+      'Developed 4 major iOS applications from scratch',
       'Implemented Razorpay, Cashfree, and GrayQuest payment APIs',
       'Mentored junior developers and conducted code reviews',
       'Reduced app load time by 40% through optimization',
