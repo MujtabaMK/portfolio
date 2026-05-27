@@ -23,8 +23,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'mujtabakhanakola@gmail.com',
-    href: 'mailto:mujtabakhanakola@gmail.com',
+    value: 'mujtabakhan@mujtabakhan.com',
+    href: 'mailto:mujtabakhan@mujtabakhan.com',
     accent: 'text-primary',
   },
   {
