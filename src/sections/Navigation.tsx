@@ -53,7 +53,7 @@ export default function Navigation({ scrollY }: NavigationProps) {
           >
             <img
               src={logoMhk}
-              alt="MHK"
+              alt="Mujtaba Khan - MHK Logo"
               className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
               style={{
                 filter:
