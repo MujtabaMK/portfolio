@@ -3,22 +3,6 @@ import { Download, ExternalLink, Mail } from 'lucide-react';
 import { gsap } from 'gsap';
 import resume from "../assets/files/Mujtaba_Khan_iOS_Developer.pdf";
 
-function AnimatedNumber({ end, suffix = '', duration = 1.6, trigger = true }: { end: number; suffix?: string; duration?: number; trigger?: boolean }) {
-  const [value, setValue] = useState(0);
-  useEffect(() => {
-    if (!trigger) return;
-    const obj = { val: 0 };
-    const tween = gsap.to(obj, {
-      val: end,
-      duration,
-      ease: 'power3.out',
-      onUpdate: () => setValue(Math.floor(obj.val)),
-    });
-    return () => { tween.kill(); };
-  }, [end, duration, trigger]);
-  return <>{value}{suffix}</>;
-}
-
 export default function Hero() {
   const nameRef = useRef<HTMLHeadingElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
@@ -171,13 +155,13 @@ export default function Hero() {
           {/* Stats */}
           <div className={`mt-12 sm:mt-16 grid grid-cols-3 gap-3 sm:gap-8 max-w-3xl mx-auto transition-all duration-700 delay-750 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {[
-              { end: 8, suffix: '+', label: 'Years Experience' },
-              { end: 16, suffix: '+', label: 'Apps Shipped' },
-              { end: 1, suffix: '', label: 'Indie Product' },
+              { value: '9+', label: 'Years Experience' },
+              { value: '10+', label: 'Apps Shipped' },
+              { value: '1', label: 'Indie Product' },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-gradient mb-1 tabular-nums">
-                  <AnimatedNumber end={stat.end} suffix={stat.suffix} trigger={isVisible} />
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-gradient mb-1">
+                  {stat.value}
                 </div>
                 <div className="text-xs sm:text-sm text-white/70">{stat.label}</div>
               </div>
