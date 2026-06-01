@@ -201,7 +201,7 @@ export default function Projects() {
             Featured <span className="text-gradient">Projects</span>
           </h2>
           <p data-aos="fade-up" data-aos-delay="160" className="text-white/75 max-w-2xl mx-auto text-sm sm:text-base px-4">
-            16 production mobile apps shipped — 1 indie product I own end-to-end, 15 built for upGrad, Atlas SkillTech and Hubmatrix.
+            10+ production mobile apps shipped — 1 indie product I own end-to-end, rest built for upGrad, Atlas SkillTech and Hubmatrix.
           </p>
         </div>
 
