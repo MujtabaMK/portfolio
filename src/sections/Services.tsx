@@ -19,7 +19,7 @@ const services = [
     icon: Rocket,
     title: 'App Store & Play Store Launch',
     blurb:
-      'Provisioning, signing, listing copy, screenshots, App Store Connect and Play Console — published 15+ apps.',
+      'Provisioning, signing, listing copy, screenshots, App Store Connect and Play Console — published 10+ apps.',
     color: 'from-orange-500 to-red-500',
   },
   {

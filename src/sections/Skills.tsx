@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -23,17 +23,9 @@ const technologies = [
   'Unit Testing', 'UI Testing', 'TestFlight', 'App Store Connect',
 ];
 
-function AnimatedStat({ end, suffix, progress }: { end: number; suffix: string; progress: number }) {
-  // Eases progress 0..1 → smoother count animation
-  const eased = 1 - Math.pow(1 - Math.max(0, Math.min(1, progress)), 2.5);
-  return <>{Math.floor(eased * end)}{suffix}</>;
-}
-
 export default function Skills() {
   const sectionRef = useRef<HTMLElement>(null);
   const barsContainerRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
-  const [statsProgress, setStatsProgress] = useState(0);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -60,17 +52,6 @@ export default function Skills() {
         );
       });
 
-      // Stat counters: tween value with scrub so number counts up while scrolling
-      // into the stats block and back down when scrolling away.
-      if (statsRef.current) {
-        ScrollTrigger.create({
-          trigger: statsRef.current,
-          start: 'top 90%',
-          end: 'top 40%',
-          scrub: 1.2,
-          onUpdate: (self) => setStatsProgress(self.progress),
-        });
-      }
     }, sectionRef);
 
     return () => ctx.revert();
@@ -149,16 +130,16 @@ export default function Skills() {
             </div>
 
             {/* Stat counters */}
-            <div ref={statsRef} className="mt-4 sm:mt-6 grid grid-cols-2 gap-3 sm:gap-4">
+            <div className="mt-4 sm:mt-6 grid grid-cols-2 gap-3 sm:gap-4">
               <div data-aos="fade-up" data-aos-delay="100" className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4 text-center hover:scale-105 transition-transform">
-                <div className="text-2xl sm:text-3xl font-display font-bold text-gradient mb-0.5 sm:mb-1 tabular-nums">
-                  <AnimatedStat end={15} suffix="+" progress={statsProgress} />
+                <div className="text-2xl sm:text-3xl font-display font-bold text-gradient mb-0.5 sm:mb-1">
+                  10+
                 </div>
                 <div className="text-xs sm:text-sm text-white/60">Apps on App Store</div>
               </div>
               <div data-aos="fade-up" data-aos-delay="200" className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4 text-center hover:scale-105 transition-transform">
-                <div className="text-2xl sm:text-3xl font-display font-bold text-gradient mb-0.5 sm:mb-1 tabular-nums">
-                  <AnimatedStat end={50} suffix="K+" progress={statsProgress} />
+                <div className="text-2xl sm:text-3xl font-display font-bold text-gradient mb-0.5 sm:mb-1">
+                  50K+
                 </div>
                 <div className="text-xs sm:text-sm text-white/60">Total Downloads</div>
               </div>

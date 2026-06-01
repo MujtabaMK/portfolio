@@ -5,8 +5,8 @@ import { Code2, Smartphone } from 'lucide-react';
 import profile from '../assets/images/profile-2026.jpg';
 
 const stats = [
-  { icon: Code2, value: '8+', label: 'Years Experience', color: 'from-blue-500 to-cyan-500' },
-  { icon: Smartphone, value: '15+', label: 'Apps Developed', color: 'from-purple-500 to-pink-500' },
+  { icon: Code2, value: '9+', label: 'Years Experience', color: 'from-blue-500 to-cyan-500' },
+  { icon: Smartphone, value: '10+', label: 'Apps Developed', color: 'from-purple-500 to-pink-500' },
 ];
 
 export default function About() {
@@ -60,7 +60,7 @@ export default function About() {
                     <Code2 className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div>
-                    <div className="text-xl sm:text-2xl font-display font-bold text-white">8+</div>
+                    <div className="text-xl sm:text-2xl font-display font-bold text-white">9+</div>
                     <div className="text-xs sm:text-sm text-white/60">Years Exp.</div>
                   </div>
                 </div>
@@ -85,7 +85,7 @@ export default function About() {
             <div className={`space-y-3 sm:space-y-4 text-sm sm:text-base text-white/70 leading-relaxed mb-6 sm:mb-8 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <p>
                 I'm <span className="text-white font-semibold">Mujtaba Khan</span>, a passionate iOS developer
-                with over 8 years of experience building beautiful, functional mobile applications.
+                with over 9 years of experience building beautiful, functional mobile applications.
               </p>
               <p>
                 My expertise spans <span className="text-white">Swift</span>, <span className="text-white">SwiftUI</span>, 

@@ -180,8 +180,8 @@ export default function Experience() {
         >
           {[
             { value: '2', label: 'Companies' },
-            { value: '8+', label: 'Years' },
-            { value: '15+', label: 'Apps' },
+            { value: '9+', label: 'Years' },
+            { value: '10+', label: 'Apps' },
             { value: '50K+', label: 'Users' },
           ].map((stat, index) => (
             <div
