@@ -11,6 +11,7 @@ const navLinks = [
   { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
   { name: 'Experience', href: '#experience' },
+  { name: 'Certifications', href: '#certifications' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -107,7 +108,7 @@ export default function Navigation({ scrollY }: NavigationProps) {
       {/* Mobile Menu */}
       <div
         className={`md:hidden bg-background/95 backdrop-blur-xl border-b border-white/10 overflow-hidden transition-all duration-300 ${
-          isMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
+          isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
         <div className="px-4 py-4 space-y-1">

@@ -13,6 +13,7 @@ import Skills from './sections/Skills';
 import Services from './sections/Services';
 import Projects from './sections/Projects';
 import Experience from './sections/Experience';
+import Certifications from './sections/Certifications';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
 
@@ -140,6 +141,7 @@ function App() {
         <Services />
         <Projects />
         <Experience />
+        <Certifications />
         <Contact />
       </main>
 
