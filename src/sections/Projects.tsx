@@ -107,6 +107,7 @@ const indieProducts: Showcase[] = [
     tech: ['Flutter', 'Dart', 'Cloud Sync', 'Charts', 'Material 3'],
     kind: 'indie',
     links: [
+      { label: 'Website', href: 'https://coresyncgo.com/HabitNaro_index.html', kind: 'website' },
       { label: 'App Store', href: 'https://apps.apple.com/in/app/habitnaro-habit-tracker/id6822220701', kind: 'appstore' },
       { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.mujtaba.habitnaro', kind: 'playstore' },
     ],
@@ -125,6 +126,7 @@ const indieProducts: Showcase[] = [
     tech: ['Flutter', 'Dart', 'Charts', 'Local Storage', 'Material 3'],
     kind: 'indie',
     links: [
+      { label: 'Website', href: 'https://coresyncgo.com/Sal_index.html', kind: 'website' },
       { label: 'App Store', href: 'https://apps.apple.com/in/app/salvendi/id6827112514', kind: 'appstore' },
       { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.mujtaba.salarysense', kind: 'playstore' },
     ],
@@ -145,7 +147,10 @@ const clientProducts: Showcase[] = [
     platforms: 'Android',
     tech: ['Flutter', 'Dart', 'Health Connect', 'Cloud Sync', 'Charts'],
     kind: 'client',
-    links: [{ label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.fit.fitrise', kind: 'playstore' }],
+    links: [
+      { label: 'Website', href: 'https://coresyncgo.com/Fitrize_index.html', kind: 'website' },
+      { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.fit.fitrise', kind: 'playstore' },
+    ],
   },
 ];
 
