@@ -34,6 +34,9 @@ import futureTech from '../assets/images/project-future-tech.jpg';
 import atlasBuzz from '../assets/images/project-atlas-buzz.jpg';
 import employeeConnect from '../assets/images/project-employee-connect.jpg';
 import teamsFM from '../assets/images/project-teams-fm.jpg';
+import habitNaro from '../assets/images/project-habitnaro.jpg';
+import salvendi from '../assets/images/project-salvendi.jpg';
+import fitrize from '../assets/images/project-fitrize.jpg';
 
 type ProjectLink = { label: string; href: string; kind: 'website' | 'appstore' | 'playstore' };
 type Project = {
@@ -66,6 +69,52 @@ const projects: Project[] = [
       { label: 'Website', href: 'https://coresyncgo.com/', kind: 'website' },
       { label: 'App Store', href: 'https://apps.apple.com/us/app/coresync-go/id6761988704', kind: 'appstore' },
       { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.mujtaba.coresync', kind: 'playstore' },
+    ],
+  },
+  {
+    id: 11,
+    title: 'HabitNaro',
+    description:
+      'My own habit tracker for iOS and Android. Tick off daily and weekly habits in a month grid, manage to-dos with deadlines, priorities and overdue tracking, set monthly goals by life area, and review the whole year on an annual dashboard with best months ranked. Includes a monthly journal, custom categories and account sync across devices.',
+    image: habitNaro,
+    imageBg: '#151515',
+    tech: ['Flutter', 'Dart', 'Cloud Sync', 'Charts', 'Material 3'],
+    company: 'Personal Product',
+    color: 'from-emerald-500 to-teal-500',
+    myProduct: true,
+    links: [
+      { label: 'App Store', href: 'https://apps.apple.com/in/app/habitnaro-habit-tracker/id6822220701', kind: 'appstore' },
+      { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.mujtaba.habitnaro', kind: 'playstore' },
+    ],
+  },
+  {
+    id: 12,
+    title: 'Salvendi',
+    description:
+      'My own salary & spending tracker for iOS and Android. Shows money left and days until payday, logs expenses in a few taps by category, tracks bills and EMIs, sets per-category limits, suggests a safe daily spend, and saves towards goals — with spending insights and a clean black-and-gold design in rupees.',
+    image: salvendi,
+    imageBg: '#151515',
+    tech: ['Flutter', 'Dart', 'Charts', 'Local Storage', 'Material 3'],
+    company: 'Personal Product',
+    color: 'from-amber-500 to-yellow-600',
+    myProduct: true,
+    links: [
+      { label: 'App Store', href: 'https://apps.apple.com/in/app/salvendi/id6827112514', kind: 'appstore' },
+      { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.mujtaba.salarysense', kind: 'playstore' },
+    ],
+  },
+  {
+    id: 13,
+    title: 'Fitrize',
+    description:
+      'Fitness app built for a client. A short assessment sets a personal calorie goal; users log workouts with sets, reps and a rest timer, track meals, macros and water, sync steps from Health Connect (Samsung Health, Google Fit, Fitbit), log sleep, and follow weight trends and habit rings — with data synced to their account.',
+    image: fitrize,
+    imageBg: '#151515',
+    tech: ['Flutter', 'Dart', 'Health Connect', 'Cloud Sync', 'Charts'],
+    company: 'Client Project',
+    color: 'from-violet-500 to-purple-600',
+    links: [
+      { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.fit.fitrise', kind: 'playstore' },
     ],
   },
   {
@@ -201,7 +250,7 @@ export default function Projects() {
             Featured <span className="text-gradient">Projects</span>
           </h2>
           <p data-aos="fade-up" data-aos-delay="160" className="text-white/75 max-w-2xl mx-auto text-sm sm:text-base px-4">
-            10+ production mobile apps shipped — 1 indie product I own end-to-end, rest built for upGrad, Atlas SkillTech and Hubmatrix.
+            10+ production mobile apps shipped — 3 indie products I own end-to-end, plus client work and apps built for upGrad, Atlas SkillTech and Hubmatrix.
           </p>
         </div>
 
