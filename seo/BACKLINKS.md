@@ -5,7 +5,7 @@ accounts). They're ordered by impact-for-effort. Each link points Google to your
 helps it understand that *this* Mujtaba Khan = mujtabakhan.com. Do the top 5 first.
 
 > Canonical text to reuse everywhere — keep it identical for a consistent "entity":
-> **Mujtaba Khan — iOS & Flutter Developer, Mumbai. 9+ yrs, 10+ apps shipped. https://mujtabakhan.com**
+> **Mujtaba Khan — iOS & Flutter Developer, Mumbai. 10+ yrs, 10+ apps shipped. https://mujtabakhan.com**
 
 ---
 

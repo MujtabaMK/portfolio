@@ -11,7 +11,7 @@ HOW TO USE THIS FILE (creates a GitHub profile backlink):
 
 # Hi, I'm Mujtaba Khan 👋
 
-**iOS & Flutter Developer** based in Mumbai, India · 9+ years · 10+ apps shipped to the App Store & Google Play.
+**iOS & Flutter Developer** based in Mumbai, India · 10+ years · 10+ apps shipped to the App Store & Google Play.
 
 🌐 **Portfolio:** [mujtabakhan.com](https://mujtabakhan.com)
 💼 **Currently:** iOS Developer @ [upGrad](https://www.upgrad.com)
