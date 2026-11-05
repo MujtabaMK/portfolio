@@ -119,7 +119,7 @@ export default function Hero() {
 
           {/* Description */}
           <p ref={descRef} className="max-w-2xl mx-auto text-sm sm:text-base lg:text-lg text-white/75 mb-8 sm:mb-10 leading-relaxed px-4">
-            I build production mobile apps that scale — Flutter and native iOS, from enterprise dashboards at upGrad to my own indie product <a href="https://coresyncgo.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent transition-colors underline-offset-4 hover:underline">CoreSyncGo</a>, all live on the App Store and Google Play.
+            I build production mobile apps that scale — Flutter and native iOS, from enterprise dashboards at upGrad to my own indie products <a href="https://coresyncgo.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent transition-colors underline-offset-4 hover:underline">CoreSyncGo</a>, <a href="https://apps.apple.com/in/app/habitnaro-habit-tracker/id6822220701" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent transition-colors underline-offset-4 hover:underline">HabitNaro</a> and <a href="https://apps.apple.com/in/app/salvendi/id6827112514" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent transition-colors underline-offset-4 hover:underline">Salvendi</a>, all live on the App Store and Google Play.
           </p>
 
           {/* CTA Buttons */}
@@ -153,11 +153,12 @@ export default function Hero() {
           </div>
 
           {/* Stats */}
-          <div className={`mt-12 sm:mt-16 grid grid-cols-3 gap-3 sm:gap-8 max-w-3xl mx-auto transition-all duration-700 delay-750 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`mt-12 sm:mt-16 grid grid-cols-2 sm:grid-cols-4 gap-y-6 gap-x-3 sm:gap-8 max-w-3xl mx-auto transition-all duration-700 delay-750 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {[
-              { value: '9+', label: 'Years Experience' },
+              { value: '10+', label: 'Years Experience' },
               { value: '10+', label: 'Apps Shipped' },
-              { value: '1', label: 'Indie Product' },
+              { value: '3', label: 'Indie Products' },
+              { value: '1', label: 'Client Product' },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-gradient mb-1">

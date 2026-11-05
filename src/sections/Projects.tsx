@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { ExternalLink, Globe, Sparkles } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Briefcase, Check, ExternalLink, Globe, Sparkles, X } from 'lucide-react';
 
 // Proper Apple brand logo (silhouette with bite), not the fruit icon
 const AppleIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
@@ -37,9 +37,31 @@ import teamsFM from '../assets/images/project-teams-fm.jpg';
 import habitNaro from '../assets/images/project-habitnaro.jpg';
 import salvendi from '../assets/images/project-salvendi.jpg';
 import fitrize from '../assets/images/project-fitrize.jpg';
+import iconCoreSyncGo from '../assets/images/icon-coresyncgo.png';
+import iconHabitNaro from '../assets/images/icon-habitnaro.png';
+import iconSalvendi from '../assets/images/icon-salvendi.png';
+import iconFitrize from '../assets/images/icon-fitrize.png';
 
 type ProjectLink = { label: string; href: string; kind: 'website' | 'appstore' | 'playstore' };
-type Project = {
+
+// Big showcase rows: my own products + client apps
+type Showcase = {
+  id: string;
+  title: string;
+  tagline: string;
+  description: string;
+  highlights: string[];
+  image: string;
+  icon: string;
+  accent: string; // hex, used for glow + accents
+  platforms: string;
+  tech: string[];
+  links: ProjectLink[];
+  kind: 'indie' | 'client';
+};
+
+// Compact grid cards: apps built at companies
+type CompanyProject = {
   id: number;
   title: string;
   description: string;
@@ -48,23 +70,23 @@ type Project = {
   tech: string[];
   company: string;
   color: string;
-  featured?: boolean;
-  myProduct?: boolean;
   links?: ProjectLink[];
 };
 
-const projects: Project[] = [
+const indieProducts: Showcase[] = [
   {
-    id: 1,
+    id: 'coresyncgo',
     title: 'CoreSyncGo',
-    description: 'My own indie product — an all-in-one productivity & wellness hub for iOS and Android. Built end-to-end in Flutter, it unifies tasks, password vault (biometric), OCR document scanning, QR/barcode generation, fitness & habit tracking, food logging, and voice translation in 20+ languages — with real-time cloud sync across devices. Shipped to both the App Store and Google Play.',
+    tagline: 'All-in-one productivity & wellness hub',
+    description:
+      'Tasks, a biometric password vault, document scanning, QR tools, fitness and habit tracking, food logging and voice translation — unified in one Flutter app with real-time cloud sync across devices.',
+    highlights: ['Biometric password vault', 'OCR scanner & QR tools', 'Voice translation, 20+ languages', 'Real-time cloud sync'],
     image: coreSyncGo,
-    imageBg: '#151515',
+    icon: iconCoreSyncGo,
+    accent: '#7c6cf6',
+    platforms: 'iOS · Android',
     tech: ['Flutter', 'Dart', 'Firebase', 'Cloud Sync', 'Biometric Auth', 'OCR', 'Material 3'],
-    company: 'Personal Product',
-    color: 'from-indigo-500 via-purple-500 to-pink-500',
-    featured: true,
-    myProduct: true,
+    kind: 'indie',
     links: [
       { label: 'Website', href: 'https://coresyncgo.com/', kind: 'website' },
       { label: 'App Store', href: 'https://apps.apple.com/us/app/coresync-go/id6761988704', kind: 'appstore' },
@@ -72,51 +94,62 @@ const projects: Project[] = [
     ],
   },
   {
-    id: 11,
+    id: 'habitnaro',
     title: 'HabitNaro',
+    tagline: 'Habits, to-dos & yearly goals',
     description:
-      'My own habit tracker for iOS and Android. Tick off daily and weekly habits in a month grid, manage to-dos with deadlines, priorities and overdue tracking, set monthly goals by life area, and review the whole year on an annual dashboard with best months ranked. Includes a monthly journal, custom categories and account sync across devices.',
+      'Tick off daily and weekly habits in a month grid, manage to-dos with deadlines and priorities, set goals for every month, and see the whole year on one dashboard — with a monthly journal and account sync.',
+    highlights: ['Daily & weekly habit grid', 'To-dos with deadlines & priorities', 'Monthly goals by life area', 'Annual progress dashboard'],
     image: habitNaro,
-    imageBg: '#151515',
+    icon: iconHabitNaro,
+    accent: '#10b981',
+    platforms: 'iOS · Android',
     tech: ['Flutter', 'Dart', 'Cloud Sync', 'Charts', 'Material 3'],
-    company: 'Personal Product',
-    color: 'from-emerald-500 to-teal-500',
-    myProduct: true,
+    kind: 'indie',
     links: [
       { label: 'App Store', href: 'https://apps.apple.com/in/app/habitnaro-habit-tracker/id6822220701', kind: 'appstore' },
       { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.mujtaba.habitnaro', kind: 'playstore' },
     ],
   },
   {
-    id: 12,
+    id: 'salvendi',
     title: 'Salvendi',
+    tagline: 'Track salary and spending',
     description:
-      'My own salary & spending tracker for iOS and Android. Shows money left and days until payday, logs expenses in a few taps by category, tracks bills and EMIs, sets per-category limits, suggests a safe daily spend, and saves towards goals — with spending insights and a clean black-and-gold design in rupees.',
+      'See money left and days until payday, add expenses in a few taps, and find out where your money went each month — with bills, EMIs, category limits and savings goals in a clean black-and-gold design.',
+    highlights: ['Payday countdown & money left', 'Bills & EMI tracking', 'Category spending limits', 'Savings goals & tips'],
     image: salvendi,
-    imageBg: '#151515',
+    icon: iconSalvendi,
+    accent: '#d4a537',
+    platforms: 'iOS · Android',
     tech: ['Flutter', 'Dart', 'Charts', 'Local Storage', 'Material 3'],
-    company: 'Personal Product',
-    color: 'from-amber-500 to-yellow-600',
-    myProduct: true,
+    kind: 'indie',
     links: [
       { label: 'App Store', href: 'https://apps.apple.com/in/app/salvendi/id6827112514', kind: 'appstore' },
       { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.mujtaba.salarysense', kind: 'playstore' },
     ],
   },
+];
+
+const clientProducts: Showcase[] = [
   {
-    id: 13,
+    id: 'fitrize',
     title: 'Fitrize',
+    tagline: 'Workouts, meals, water, sleep & steps',
     description:
-      'Fitness app built for a client. A short assessment sets a personal calorie goal; users log workouts with sets, reps and a rest timer, track meals, macros and water, sync steps from Health Connect (Samsung Health, Google Fit, Fitbit), log sleep, and follow weight trends and habit rings — with data synced to their account.',
+      'A fitness app built for a client. A short assessment sets a personal calorie goal; users log workouts and meals, track macros and water, sync steps from Health Connect, and follow weight trends and habit rings.',
+    highlights: ['Personal calorie goal', 'Workout log with rest timer', 'Meals, macros & water', 'Health Connect step sync'],
     image: fitrize,
-    imageBg: '#151515',
+    icon: iconFitrize,
+    accent: '#8b5cf6',
+    platforms: 'Android',
     tech: ['Flutter', 'Dart', 'Health Connect', 'Cloud Sync', 'Charts'],
-    company: 'Client Project',
-    color: 'from-violet-500 to-purple-600',
-    links: [
-      { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.fit.fitrise', kind: 'playstore' },
-    ],
+    kind: 'client',
+    links: [{ label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.fit.fitrise', kind: 'playstore' }],
   },
+];
+
+const companyProjects: CompanyProject[] = [
   {
     id: 10,
     title: 'ATLAS Dashboard',
@@ -127,7 +160,6 @@ const projects: Project[] = [
     tech: ['Flutter', 'Dart', 'REST APIs', 'Charts', 'Analytics'],
     company: 'upGrad',
     color: 'from-indigo-500 to-blue-500',
-    featured: true,
     links: [
       { label: 'App Store', href: 'https://apps.apple.com/in/app/atlas-dashboard/id6760095449', kind: 'appstore' },
       { label: 'Google Play', href: 'https://play.google.com/store/apps/details?id=com.atlas.dashboard', kind: 'playstore' },
@@ -213,36 +245,138 @@ const projects: Project[] = [
   },
 ];
 
+const linkIcon = (kind: ProjectLink['kind']) => (kind === 'appstore' ? AppleIcon : kind === 'playstore' ? PlayStoreIcon : Globe);
+
+function GroupHeading({ eyebrow, title, count }: { eyebrow: string; title: string; count: number }) {
+  return (
+    <div data-aos="fade-up" className="flex items-end justify-between gap-4 mb-5 sm:mb-8 border-b border-white/10 pb-3 sm:pb-4">
+      <div>
+        <p className="text-[11px] sm:text-xs font-semibold tracking-[0.2em] text-primary uppercase mb-1">{eyebrow}</p>
+        <h3 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-white">{title}</h3>
+      </div>
+      <span className="shrink-0 text-xs sm:text-sm text-white/50 font-mono">
+        {String(count).padStart(2, '0')} {count === 1 ? 'app' : 'apps'}
+      </span>
+    </div>
+  );
+}
+
+function ShowcaseCard({ app, reverse }: { app: Showcase; reverse: boolean }) {
+  return (
+    <article
+      data-aos="fade-up"
+      className="group relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-xl"
+      style={{ boxShadow: `0 0 0 1px ${app.accent}14, 0 30px 80px -40px ${app.accent}66` }}
+    >
+      <div className="grid lg:grid-cols-12">
+        {/* Screenshots */}
+        <div
+          className={`relative lg:col-span-7 flex items-center justify-center p-3 sm:p-5 ${reverse ? 'lg:order-2' : ''}`}
+          style={{ background: `radial-gradient(120% 90% at 50% 100%, ${app.accent}33 0%, #151515 60%)` }}
+        >
+          <img
+            src={app.image}
+            alt={`${app.title} app screenshots`}
+            loading="lazy"
+            className="w-full h-auto rounded-xl sm:rounded-2xl transition-transform duration-700 group-hover:scale-[1.02]"
+          />
+        </div>
+
+        {/* Details */}
+        <div className={`lg:col-span-5 p-5 sm:p-8 lg:p-10 flex flex-col ${reverse ? 'lg:order-1' : ''}`}>
+          <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
+            <img
+              src={app.icon}
+              alt={`${app.title} icon`}
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl ring-1 ring-white/15 shadow-lg"
+            />
+            <div className="min-w-0">
+              <h4 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-white leading-tight">{app.title}</h4>
+              <p className="text-xs sm:text-sm text-white/60 truncate">{app.tagline}</p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2 mb-4">
+            {app.kind === 'indie' ? (
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-semibold bg-white text-primary">
+                <Sparkles className="w-3 h-3" />
+                MY PRODUCT
+              </span>
+            ) : (
+              <span
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-semibold text-white"
+                style={{ backgroundColor: app.accent }}
+              >
+                <Briefcase className="w-3 h-3" />
+                CLIENT PROJECT
+              </span>
+            )}
+            <span className="px-2.5 py-1 rounded-full text-[10px] sm:text-xs text-white/75 border border-white/15">{app.platforms}</span>
+          </div>
+
+          <p className="text-sm sm:text-base text-white/75 leading-relaxed mb-5">{app.description}</p>
+
+          <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-2 mb-5 sm:mb-6">
+            {app.highlights.map((h) => (
+              <li key={h} className="flex items-start gap-2 text-xs sm:text-sm text-white/85">
+                <Check className="w-4 h-4 mt-0.5 shrink-0" style={{ color: app.accent }} />
+                {h}
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6">
+            {app.tech.map((t) => (
+              <span key={t} className="px-2.5 py-0.5 sm:py-1 rounded-full bg-white/5 text-white/65 text-[10px] sm:text-xs border border-white/10">
+                {t}
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-auto flex flex-wrap gap-2">
+            {app.links.map((link) => {
+              const Icon = linkIcon(link.kind);
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 sm:py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-medium border border-white/15 transition-colors"
+                >
+                  <Icon className="w-4 h-4" />
+                  {link.label}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export default function Projects() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [selectedProject, setSelectedProject] = useState<CompanyProject | null>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
+    if (!selectedProject) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setSelectedProject(null);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [selectedProject]);
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const counts = [
+    { value: indieProducts.length, label: 'Indie Products' },
+    { value: clientProducts.length, label: 'Client Product' },
+    { value: companyProjects.length, label: 'Company Apps' },
+  ];
 
   return (
-    <section id="projects" ref={sectionRef} className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
+    <section id="projects" className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div
-          className={`text-center mb-10 sm:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
+        <div className="text-center mb-10 sm:mb-16">
           <span data-aos="fade-up" className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-4 sm:mb-6">
             Portfolio
           </span>
@@ -250,108 +384,106 @@ export default function Projects() {
             Featured <span className="text-gradient">Projects</span>
           </h2>
           <p data-aos="fade-up" data-aos-delay="160" className="text-white/75 max-w-2xl mx-auto text-sm sm:text-base px-4">
-            10+ production mobile apps shipped — 3 indie products I own end-to-end, plus client work and apps built for upGrad, Atlas SkillTech and Hubmatrix.
+            Apps I own end-to-end, apps I build for clients, and production apps shipped for upGrad, Atlas SkillTech and Hubmatrix.
           </p>
+
+          <div data-aos="fade-up" data-aos-delay="220" className="mt-6 sm:mt-8 inline-grid grid-cols-3 divide-x divide-white/10 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl">
+            {counts.map((c) => (
+              <div key={c.label} className="px-4 sm:px-8 py-3 sm:py-4">
+                <div className="text-2xl sm:text-3xl font-display font-bold text-gradient leading-none mb-1">{c.value}</div>
+                <div className="text-[10px] sm:text-xs text-white/60 whitespace-nowrap">{c.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
-          {projects.map((project, index) => (
-            <div
-              key={project.id}
-              data-aos="fade-up"
-              data-aos-delay={50 + (index % 4) * 80}
-              className={`group relative glass rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer hover:-translate-y-2 transition-all duration-500 ${project.featured ? 'ring-1 ring-primary/40 sm:col-span-2 lg:col-span-1 xl:col-span-2' : ''}`}
-              onClick={() => setSelectedProject(project)}
-            >
-              {/* Image */}
+        {/* My products */}
+        <div className="mb-16 sm:mb-24">
+          <GroupHeading eyebrow="Built & owned by me" title="My Products" count={indieProducts.length} />
+          <div className="space-y-6 sm:space-y-10">
+            {indieProducts.map((app, i) => (
+              <ShowcaseCard key={app.id} app={app} reverse={i % 2 === 1} />
+            ))}
+          </div>
+        </div>
+
+        {/* Client work */}
+        <div className="mb-16 sm:mb-24">
+          <GroupHeading eyebrow="Freelance" title="Client Work" count={clientProducts.length} />
+          <div className="space-y-6 sm:space-y-10">
+            {clientProducts.map((app) => (
+              <ShowcaseCard key={app.id} app={app} reverse={false} />
+            ))}
+          </div>
+        </div>
+
+        {/* Company apps */}
+        <div>
+          <GroupHeading eyebrow="Professional experience" title="Company Apps" count={companyProjects.length} />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {companyProjects.map((project, index) => (
               <div
-                className={`relative ${project.featured ? 'aspect-[16/10]' : 'aspect-[4/3]'} overflow-hidden`}
-                style={project.featured ? { backgroundColor: project.imageBg || '#f5f4f8' } : undefined}
+                key={project.id}
+                data-aos="fade-up"
+                data-aos-delay={50 + (index % 3) * 80}
+                className="group relative flex flex-col glass rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer hover:-translate-y-1.5 hover:border-white/20 transition-all duration-500"
+                onClick={() => setSelectedProject(project)}
               >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className={`w-full h-full transition-transform duration-500 group-hover:scale-105 ${project.featured ? 'object-contain' : 'object-cover'}`}
-                />
-
-                {/* Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent transition-opacity duration-300 ${project.featured ? 'opacity-30 group-hover:opacity-50' : 'opacity-60 group-hover:opacity-80'}`} />
-
-                {/* Featured / Company Badge */}
-                <div className="absolute top-3 sm:top-4 left-3 sm:left-4 flex items-center gap-2">
-                  {project.myProduct && (
-                    <span className="inline-flex items-center gap-1 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold bg-white text-primary shadow-lg">
-                      <Sparkles className="w-3 h-3" />
-                      MY PRODUCT
-                    </span>
-                  )}
-                  <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium bg-gradient-to-r ${project.color} text-white`}>
+                <div className="relative aspect-[16/10] overflow-hidden" style={{ backgroundColor: project.imageBg || '#0b0b14' }}>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
+                  <span className={`absolute top-3 left-3 px-2.5 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium bg-gradient-to-r ${project.color} text-white`}>
                     {project.company}
                   </span>
-                </div>
-
-                {/* View Icon */}
-                <div className="absolute top-3 sm:top-4 right-3 sm:right-4 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-4 sm:p-6">
-                <h3 className={`font-display font-bold text-white mb-1.5 sm:mb-2 group-hover:text-gradient transition-colors line-clamp-1 ${project.featured ? 'text-lg sm:text-xl lg:text-2xl' : 'text-base sm:text-lg'}`}>
-                  {project.title}
-                </h3>
-                <p className={`text-white/75 mb-3 sm:mb-4 ${project.featured ? 'text-sm sm:text-base line-clamp-3' : 'text-xs sm:text-sm line-clamp-2'}`}>
-                  {project.description}
-                </p>
-
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                  {project.tech.slice(0, project.featured ? 4 : 2).map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-white/5 text-white/70 text-[10px] sm:text-xs border border-white/10"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {project.tech.length > (project.featured ? 4 : 2) && (
-                    <span className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-white/5 text-white/70 text-[10px] sm:text-xs border border-white/10">
-                      +{project.tech.length - (project.featured ? 4 : 2)}
-                    </span>
-                  )}
-                </div>
-
-                {/* Inline external links — shown on every card that has links */}
-                {project.links && project.links.length > 0 && (
-                  <div className="mt-3 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2" onClick={(e) => e.stopPropagation()}>
-                    {project.links.map((link) => {
-                      const Icon = link.kind === 'appstore' ? AppleIcon : link.kind === 'playstore' ? PlayStoreIcon : Globe;
-                      return (
-                        <a
-                          key={link.label}
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-[11px] sm:text-xs font-medium border border-white/15 transition-colors"
-                        >
-                          <Icon className="w-3.5 h-3.5" />
-                          {link.label}
-                        </a>
-                      );
-                    })}
+                  <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <ExternalLink className="w-4 h-4 text-white" />
                   </div>
-                )}
+                </div>
+
+                <div className="flex flex-col flex-1 p-4 sm:p-5">
+                  <h4 className="text-base sm:text-lg font-display font-bold text-white mb-1.5 line-clamp-1">{project.title}</h4>
+                  <p className="text-xs sm:text-sm text-white/70 line-clamp-2 mb-3">{project.description}</p>
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {project.tech.slice(0, 3).map((t) => (
+                      <span key={t} className="px-2 py-0.5 rounded-full bg-white/5 text-white/65 text-[10px] sm:text-xs border border-white/10">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-auto flex flex-wrap gap-1.5 sm:gap-2" onClick={(e) => e.stopPropagation()}>
+                    {project.links && project.links.length > 0 ? (
+                      project.links.map((link) => {
+                        const Icon = linkIcon(link.kind);
+                        return (
+                          <a
+                            key={link.label}
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-[11px] sm:text-xs font-medium border border-white/15 transition-colors"
+                          >
+                            <Icon className="w-3.5 h-3.5" />
+                            {link.label}
+                          </a>
+                        );
+                      })
+                    ) : (
+                      <span className="text-[11px] sm:text-xs text-white/45">Internal enterprise app</span>
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* View All Button */}
-        <div
-          className={`text-center mt-10 sm:mt-12 transition-all duration-700 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-        >
+        <div className="text-center mt-10 sm:mt-14">
           <a
             href="https://github.com/MujtabaMK"
             target="_blank"
@@ -364,7 +496,7 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* Project Modal */}
+      {/* Company app modal */}
       {selectedProject && (
         <div
           onClick={() => setSelectedProject(null)}
@@ -374,81 +506,69 @@ export default function Projects() {
             onClick={(e) => e.stopPropagation()}
             className="relative max-w-2xl w-full glass rounded-2xl sm:rounded-3xl overflow-hidden animate-scale-in max-h-[85vh] flex flex-col"
           >
-            {/* Scrollable content area — image flows to the rounded top edge */}
+            <button
+              onClick={() => setSelectedProject(null)}
+              aria-label="Close"
+              className="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/70 transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
             <div className="overflow-y-auto overscroll-contain" data-lenis-prevent>
-              {/* Modal Image */}
-              <div
-                className="relative aspect-[16/10]"
-                style={{ backgroundColor: selectedProject.imageBg || (selectedProject.featured ? '#f5f4f8' : '#0b0b14') }}
-              >
-                <img
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  className="w-full h-full object-contain"
-                />
+              <div className="relative aspect-[16/10]" style={{ backgroundColor: selectedProject.imageBg || '#0b0b14' }}>
+                <img src={selectedProject.image} alt={selectedProject.title} className="w-full h-full object-contain" />
               </div>
 
-              {/* Modal Content */}
               <div className="p-5 sm:p-8">
-              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium bg-gradient-to-r ${selectedProject.color} text-white`}>
+                <span className={`inline-block px-2.5 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium bg-gradient-to-r ${selectedProject.color} text-white mb-3 sm:mb-4`}>
                   {selectedProject.company}
                 </span>
-              </div>
-              
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-white mb-3 sm:mb-4">
-                {selectedProject.title}
-              </h3>
-              
-              <p className="text-white/70 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
-                {selectedProject.description}
-              </p>
 
-              <div className="mb-5 sm:mb-6">
-                <h4 className="text-xs sm:text-sm font-semibold text-white/75 mb-2 sm:mb-3 tracking-wider">TECHNOLOGIES</h4>
-                <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                  {selectedProject.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2.5 sm:px-4 py-1 sm:py-2 rounded-full bg-white/5 text-white text-xs sm:text-sm border border-white/10"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-white mb-3 sm:mb-4">{selectedProject.title}</h3>
 
-              {selectedProject.links && selectedProject.links.length > 0 && (
+                <p className="text-white/70 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">{selectedProject.description}</p>
+
                 <div className="mb-5 sm:mb-6">
-                  <h4 className="text-xs sm:text-sm font-semibold text-white/75 mb-2 sm:mb-3 tracking-wider">LIVE LINKS</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.links.map((link) => {
-                      const Icon = link.kind === 'appstore' ? AppleIcon : link.kind === 'playstore' ? PlayStoreIcon : Globe;
-                      return (
-                        <a
-                          key={link.label}
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/15 text-white text-xs sm:text-sm font-medium border border-white/15 transition-colors"
-                        >
-                          <Icon className="w-4 h-4" />
-                          {link.label}
-                          <ExternalLink className="w-3 h-3 opacity-60" />
-                        </a>
-                      );
-                    })}
+                  <h4 className="text-xs sm:text-sm font-semibold text-white/75 mb-2 sm:mb-3 tracking-wider">TECHNOLOGIES</h4>
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                    {selectedProject.tech.map((tech) => (
+                      <span key={tech} className="px-2.5 sm:px-4 py-1 sm:py-2 rounded-full bg-white/5 text-white text-xs sm:text-sm border border-white/10">
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                 </div>
-              )}
 
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="w-full py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white font-semibold text-sm sm:text-base hover:opacity-90 transition-opacity"
-              >
-                Close
-              </button>
-            </div>
+                {selectedProject.links && selectedProject.links.length > 0 && (
+                  <div className="mb-5 sm:mb-6">
+                    <h4 className="text-xs sm:text-sm font-semibold text-white/75 mb-2 sm:mb-3 tracking-wider">LIVE LINKS</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.links.map((link) => {
+                        const Icon = linkIcon(link.kind);
+                        return (
+                          <a
+                            key={link.label}
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/15 text-white text-xs sm:text-sm font-medium border border-white/15 transition-colors"
+                          >
+                            <Icon className="w-4 h-4" />
+                            {link.label}
+                            <ExternalLink className="w-3 h-3 opacity-60" />
+                          </a>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="w-full py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white font-semibold text-sm sm:text-base hover:opacity-90 transition-opacity"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         </div>

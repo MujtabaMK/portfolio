@@ -12,7 +12,7 @@ const services = [
     icon: Layers,
     title: 'Flutter Cross-Platform',
     blurb:
-      'Ship to iOS + Android from one codebase. CoreSyncGo is my own indie product live on both stores.',
+      'Ship to iOS + Android from one codebase. My indie products CoreSyncGo, HabitNaro and Salvendi are live on both stores.',
     color: 'from-purple-500 to-pink-500',
   },
   {
