@@ -501,6 +501,16 @@ export default function Projects() {
             My Apps on the App Store
           </a>
           <a
+            href="https://play.google.com/store/apps/developer?id=Mujtaba+ul+hasan+khan"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Mujtaba Ul Hasan Khan on Google Play"
+            className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-full border border-white/20 text-white font-semibold text-sm sm:text-base hover:bg-white/5 transition-colors duration-300 hover:scale-105 active:scale-95"
+          >
+            <PlayStoreIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+            My Apps on Google Play
+          </a>
+          <a
             href="https://github.com/MujtabaMK"
             target="_blank"
             rel="noopener noreferrer"
