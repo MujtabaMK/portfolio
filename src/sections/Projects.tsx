@@ -489,7 +489,17 @@ export default function Projects() {
         </div>
 
         {/* View All Button */}
-        <div className="text-center mt-10 sm:mt-14">
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mt-10 sm:mt-14">
+          <a
+            href="https://apps.apple.com/us/developer/mujtaba-ul-hasan-khan/id1892321704"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Mujtaba Ul Hasan Khan on the App Store"
+            className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-full border border-white/20 text-white font-semibold text-sm sm:text-base hover:bg-white/5 transition-colors duration-300 hover:scale-105 active:scale-95"
+          >
+            <AppleIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+            My Apps on the App Store
+          </a>
           <a
             href="https://github.com/MujtabaMK"
             target="_blank"
