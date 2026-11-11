@@ -84,7 +84,7 @@ export default function About() {
 
             <div className={`space-y-3 sm:space-y-4 text-sm sm:text-base text-white/70 leading-relaxed mb-6 sm:mb-8 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <p>
-                I'm <span className="text-white font-semibold">Mujtaba Khan</span>, a passionate iOS developer
+                I'm <span className="text-white font-semibold">Mujtaba Khan</span> (Mujtaba Ul Hasan Khan), a passionate iOS developer
                 with over 10 years of experience building beautiful, functional mobile applications.
               </p>
               <p>

@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
           {/* Copyright */}
           <p className="text-white/85 text-xs sm:text-sm font-semibold">
-            © {currentYear} Mujtaba Khan. All rights reserved.
+            © {currentYear} Mujtaba Khan (Mujtaba Ul Hasan Khan). All rights reserved.
           </p>
 
           {/* Tagline */}
