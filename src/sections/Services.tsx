@@ -66,7 +66,7 @@ export default function Services() {
               key={service.title}
               data-aos="fade-up"
               data-aos-delay={100 + index * 100}
-              className="group glass rounded-2xl p-5 sm:p-6 hover:-translate-y-1 transition-all duration-300 cursor-default"
+              className="group relative spotlight tilt glass rounded-2xl p-5 sm:p-6 hover:-translate-y-1 transition-all duration-300 cursor-default"
             >
               <div
                 className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-4 sm:mb-5 group-hover:scale-110 transition-transform`}

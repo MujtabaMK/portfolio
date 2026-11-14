@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import ProjectPlanner from '../components/ProjectPlanner';
 
 const LinkedinIcon = ({ className = 'w-5 h-5' }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -112,6 +113,11 @@ export default function Contact() {
           </p>
         </div>
 
+        {/* Interactive brief builder */}
+        <ProjectPlanner />
+
+        <p className="text-center text-sm text-white/55 mb-5">Prefer to reach out directly?</p>
+
         {/* Contact Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mb-12">
           {contactInfo.map((item, index) => (
@@ -122,7 +128,7 @@ export default function Contact() {
               rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
               data-aos="zoom-in-up"
               data-aos-delay={80 + index * 100}
-              className="glass rounded-2xl p-5 sm:p-6 text-center group hover:bg-white/10 transition-all duration-300 hover:-translate-y-1"
+              className="relative spotlight tilt glass rounded-2xl p-5 sm:p-6 text-center group hover:bg-white/10 transition-all duration-300 hover:-translate-y-1"
             >
               <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white/[0.06] flex items-center justify-center mx-auto mb-4 group-hover:bg-white/10 group-hover:scale-110 transition-all`}>
                 <item.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${item.accent}`} />

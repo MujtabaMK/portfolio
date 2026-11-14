@@ -12,6 +12,9 @@ import Experience from './sections/Experience';
 import Certifications from './sections/Certifications';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
+import TechMarquee from './components/TechMarquee';
+import KineticHeadline from './components/KineticHeadline';
+import CtaBand from './components/CtaBand';
 
 export function render() {
   return renderToString(
@@ -24,15 +27,18 @@ export function render() {
         </div>
       </div>
       <div className="relative min-h-screen bg-background overflow-x-hidden">
-        <Navigation scrollY={0} />
+        <Navigation isScrolled={false} />
         <main className="relative" style={{ zIndex: 10 }}>
           <Hero />
+          <TechMarquee />
           <About />
           <Skills />
           <Services />
           <Projects />
+          <CtaBand />
           <Experience />
           <Certifications />
+          <KineticHeadline />
           <Contact />
         </main>
         <Footer />

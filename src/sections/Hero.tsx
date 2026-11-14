@@ -1,6 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
 import { Download, ExternalLink, Mail } from 'lucide-react';
 import { gsap } from 'gsap';
+import CountUp from '../components/CountUp';
+import PhoneMockup from '../components/PhoneMockup';
 import resume from "../assets/files/Mujtaba_Khan_iOS_Developer.pdf";
 
 export default function Hero() {
@@ -85,8 +87,8 @@ export default function Hero() {
         ))}
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8 sm:py-0">
-        <div className={`text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8 sm:py-10 lg:py-0 grid lg:grid-cols-[1.25fr_0.75fr] gap-14 lg:gap-10 items-center">
+        <div className={`text-center lg:text-left transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           {/* Greeting with typing effect */}
           <div className="mb-3 sm:mb-4">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display text-white/80 min-h-[1.5em]">
@@ -97,9 +99,9 @@ export default function Hero() {
           {/* Main name */}
           <h1
             ref={nameRef}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold mb-4 sm:mb-6 leading-[1.15] pb-2 inline-flex items-end justify-center gap-2 sm:gap-3 max-w-full"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] xl:text-7xl font-display font-bold mb-4 sm:mb-6 leading-[1.15] pb-2 inline-flex items-end justify-center lg:justify-start gap-2 sm:gap-3 max-w-full"
           >
-            <span className="text-gradient">Mujtaba Khan</span>
+            <span className="text-gradient name-sheen">Mujtaba Khan</span>
             <span className="animate-wave" aria-hidden="true">👋</span>
             <span
               aria-hidden="true"
@@ -109,7 +111,7 @@ export default function Hero() {
 
           {/* Title */}
           <div ref={titleRef} className="mb-6 sm:mb-8">
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/85 font-light px-2">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-[1.65rem] text-white/85 font-light px-2 lg:px-0">
               iOS Developer <span className="hidden sm:inline text-white/40">·</span> <span className="block sm:inline">Android &amp; Flutter Developer</span>
             </p>
             <p className="mt-2 text-xs sm:text-sm md:text-base text-white/55 font-mono tracking-wide">
@@ -118,16 +120,16 @@ export default function Hero() {
           </div>
 
           {/* Description */}
-          <p ref={descRef} className="max-w-2xl mx-auto text-sm sm:text-base lg:text-lg text-white/75 mb-8 sm:mb-10 leading-relaxed px-4">
+          <p ref={descRef} className="max-w-2xl mx-auto lg:mx-0 lg:px-0 text-sm sm:text-base lg:text-lg text-white/75 mb-8 sm:mb-10 leading-relaxed px-4">
             I build production mobile apps that scale — Flutter and native iOS, from enterprise dashboards at upGrad to my own indie products <a href="https://coresyncgo.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent transition-colors underline-offset-4 hover:underline">CoreSyncGo</a>, <a href="https://coresyncgo.com/HabitNaro_index.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent transition-colors underline-offset-4 hover:underline">HabitNaro</a> and <a href="https://coresyncgo.com/Sal_index.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent transition-colors underline-offset-4 hover:underline">Salvendi</a>, all live on the App Store and Google Play.
           </p>
 
           {/* CTA Buttons */}
-          <div className={`flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <a
               href="#projects"
               onClick={(e) => handleNavClick(e, '#projects')}
-              className="w-full sm:w-auto px-6 sm:px-7 py-3 sm:py-4 rounded-full bg-gradient-to-r from-primary to-accent text-white font-semibold text-sm sm:text-base flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-transform shadow-lg shadow-primary/30"
+              className="btn-shine relative overflow-hidden w-full sm:w-auto px-6 sm:px-7 py-3 sm:py-4 rounded-full bg-gradient-to-r from-primary to-accent text-white font-semibold text-sm sm:text-base flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-transform shadow-lg shadow-primary/30"
             >
               View My Work
               <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -153,16 +155,16 @@ export default function Hero() {
           </div>
 
           {/* Stats */}
-          <div className={`mt-12 sm:mt-16 grid grid-cols-2 sm:grid-cols-4 gap-y-6 gap-x-3 sm:gap-8 max-w-3xl mx-auto transition-all duration-700 delay-750 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className={`mt-12 sm:mt-16 grid grid-cols-2 sm:grid-cols-4 gap-y-6 gap-x-3 sm:gap-8 max-w-3xl mx-auto lg:mx-0 transition-all duration-700 delay-750 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {[
-              { value: '10+', label: 'Years Experience' },
-              { value: '10+', label: 'Apps Shipped' },
-              { value: '3', label: 'Indie Products' },
-              { value: '1', label: 'Client Product' },
+              { value: 10, suffix: '+', label: 'Years Experience' },
+              { value: 10, suffix: '+', label: 'Apps Shipped' },
+              { value: 3, suffix: '', label: 'Indie Products' },
+              { value: 1, suffix: '', label: 'Client Product' },
             ].map((stat) => (
-              <div key={stat.label} className="text-center">
+              <div key={stat.label} className="text-center lg:text-left">
                 <div className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-gradient mb-1">
-                  {stat.value}
+                  <CountUp value={stat.value} suffix={stat.suffix} />
                 </div>
                 <div className="text-xs sm:text-sm text-white/70">{stat.label}</div>
               </div>
@@ -170,7 +172,23 @@ export default function Hero() {
           </div>
         </div>
 
+        {/* Signature piece: interactive iPhone with my apps */}
+        <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+          <PhoneMockup />
+        </div>
       </div>
+
+      {/* Scroll hint */}
+      <a
+        href="#about"
+        aria-label="Scroll to About"
+        className={`scroll-hint absolute bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-white/45 hover:text-white/80 transition-all duration-700 delay-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      >
+        <span className="w-6 h-10 rounded-full border-2 border-current flex justify-center pt-2">
+          <span className="scroll-dot w-1 h-2 rounded-full bg-current" />
+        </span>
+        <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
+      </a>
     </section>
   );
 }
