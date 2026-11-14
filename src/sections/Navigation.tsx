@@ -3,7 +3,7 @@ import { Menu, X } from 'lucide-react';
 import logoMhk from '../assets/images/logo-mhk.png';
 
 interface NavigationProps {
-  scrollY: number;
+  isScrolled: boolean;
 }
 
 const navLinks = [
@@ -15,12 +15,29 @@ const navLinks = [
   { name: 'Contact', href: '#contact' },
 ];
 
-export default function Navigation({ scrollY }: NavigationProps) {
+export default function Navigation({ isScrolled }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   //const [isDarkMode, setIsDarkMode] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
+  const [active, setActive] = useState('');
 
-  const isScrolled = scrollY > 50;
+  // Highlight the nav link of the section currently in the middle of the screen
+  useEffect(() => {
+    const sections = navLinks
+      .map((l) => document.querySelector(l.href))
+      .filter((el): el is Element => !!el);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(`#${entry.target.id}`);
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px' }
+    );
+    sections.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 200);
@@ -40,7 +57,7 @@ export default function Navigation({ scrollY }: NavigationProps) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-background/90 backdrop-blur-xl border-b border-white/10' 
+          ? 'bg-background/[0.97] md:bg-background/90 backdrop-blur-xl border-b border-white/10' 
           : 'bg-transparent'
       } ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
     >
@@ -70,13 +87,28 @@ export default function Navigation({ scrollY }: NavigationProps) {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="relative text-sm font-medium text-white/70 hover:text-white transition-colors duration-300 group"
+                aria-current={active === link.href ? 'true' : undefined}
+                className={`relative text-sm font-medium hover:text-white transition-colors duration-300 group ${
+                  active === link.href ? 'text-white' : 'text-white/70'
+                }`}
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full group-hover:left-0 transition-all duration-300" />
+                <span
+                  className={`absolute -bottom-1 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full group-hover:left-0 transition-all duration-300 ${
+                    active === link.href ? 'w-full left-0' : 'w-0 left-1/2'
+                  }`}
+                />
               </a>
             ))}
             
+            <a
+              href="#planner"
+              onClick={(e) => handleNavClick(e, '#planner')}
+              className="btn-shine relative overflow-hidden hidden lg:inline-flex px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent text-white text-sm font-semibold shadow-lg shadow-primary/30 hover:scale-105 active:scale-95 transition-transform"
+            >
+              Let's talk
+            </a>
+
             {/* Theme Toggle */}
             {/* <button
               onClick={() => setIsDarkMode(!isDarkMode)}
@@ -90,7 +122,15 @@ export default function Navigation({ scrollY }: NavigationProps) {
             </button> */}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile: CTA + menu button */}
+          <div className="md:hidden flex items-center gap-2">
+          <a
+            href="#planner"
+            onClick={(e) => handleNavClick(e, '#planner')}
+            className="px-4 py-2 rounded-full bg-gradient-to-r from-primary to-accent text-white text-xs font-semibold shadow-lg shadow-primary/30 active:scale-95 transition-transform"
+          >
+            Let's talk
+          </a>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-300"
@@ -102,6 +142,7 @@ export default function Navigation({ scrollY }: NavigationProps) {
               <Menu className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             )}
           </button>
+          </div>
         </div>
       </nav>
 
@@ -117,7 +158,10 @@ export default function Navigation({ scrollY }: NavigationProps) {
               key={link.name}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className="block py-3 px-4 rounded-lg text-base font-medium text-white/70 hover:text-white hover:bg-white/5 transition-colors duration-300"
+              aria-current={active === link.href ? 'true' : undefined}
+              className={`block py-3 px-4 rounded-lg text-base font-medium hover:text-white hover:bg-white/5 transition-colors duration-300 ${
+                active === link.href ? 'text-white bg-white/5 border-l-2 border-primary' : 'text-white/70'
+              }`}
             >
               {link.name}
             </a>

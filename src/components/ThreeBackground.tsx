@@ -42,7 +42,7 @@ function ParticleField({ count }: { count: number }) {
   );
 }
 
-function CenterMesh() {
+function CenterMesh({ scale = 1, opacity = 1 }: { scale?: number; opacity?: number }) {
   const meshRef = useRef<THREE.Mesh>(null);
   const innerRef = useRef<THREE.Mesh>(null);
 
@@ -61,14 +61,14 @@ function CenterMesh() {
   });
 
   return (
-    <group>
+    <group scale={scale}>
       <mesh ref={meshRef}>
         <icosahedronGeometry args={[3.4, 1]} />
-        <meshBasicMaterial color="#7c3aed" wireframe transparent opacity={0.35} />
+        <meshBasicMaterial color="#7c3aed" wireframe transparent opacity={0.35 * opacity} />
       </mesh>
       <mesh ref={innerRef}>
         <icosahedronGeometry args={[1.6, 0]} />
-        <meshBasicMaterial color="#6366f1" wireframe transparent opacity={0.55} />
+        <meshBasicMaterial color="#6366f1" wireframe transparent opacity={0.55 * opacity} />
       </mesh>
     </group>
   );
@@ -92,6 +92,27 @@ function MouseParallax({ enabled }: { enabled: boolean }) {
     camera.lookAt(0, 0, 0);
   });
 
+  return null;
+}
+
+// Drives rendering at a fixed fps when the Canvas uses frameloop="demand".
+// Phones get 30fps — the motion is slow ambient drift, so it looks the same at half the GPU cost.
+function FrameLimiter({ fps }: { fps: number }) {
+  const { invalidate } = useThree();
+  useEffect(() => {
+    let raf = 0;
+    let last = 0;
+    const interval = 1000 / fps;
+    const loop = (now: number) => {
+      raf = requestAnimationFrame(loop);
+      if (now - last >= interval) {
+        last = now;
+        invalidate();
+      }
+    };
+    raf = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(raf);
+  }, [fps, invalidate]);
   return null;
 }
 
@@ -122,9 +143,15 @@ export default function ThreeBackground() {
   const tier = useViewportTier();
 
   // Tune particle count + DPR + pointer parallax per device tier
-  const particleCount = tier === 'mobile' ? 900 : tier === 'tablet' ? 1600 : 2500;
-  const dpr: [number, number] = tier === 'mobile' ? [1, 1] : [1, 1.5];
-  const pointerEnabled = tier === 'desktop';
+  const isTouch =
+    typeof window !== 'undefined' && window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  const reducedMotion =
+    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const lowPower = tier === 'mobile' || isTouch;
+
+  const particleCount = tier === 'mobile' ? 450 : tier === 'tablet' ? 900 : 2500;
+  const dpr: [number, number] = lowPower ? [1, 1] : [1, 1.5];
+  const pointerEnabled = tier === 'desktop' && !isTouch;
 
   return (
     <div
@@ -135,14 +162,17 @@ export default function ThreeBackground() {
       <Canvas
         camera={{ position: [0, 0, 12], fov: 60 }}
         dpr={dpr}
+        frameloop={lowPower || reducedMotion ? 'demand' : 'always'}
         gl={{
-          antialias: tier !== 'mobile',
+          antialias: !lowPower,
           alpha: true,
-          powerPreference: 'high-performance',
+          powerPreference: lowPower ? 'low-power' : 'high-performance',
         }}
       >
+        {lowPower && !reducedMotion && <FrameLimiter fps={30} />}
         <ParticleField count={particleCount} />
-        <CenterMesh />
+        {/* Smaller and fainter on phones so it doesn't fight with the text */}
+        <CenterMesh scale={tier === 'mobile' ? 0.62 : 1} opacity={tier === 'mobile' ? 0.6 : 1} />
         <MouseParallax enabled={pointerEnabled} />
       </Canvas>
     </div>

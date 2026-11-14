@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import CountUp from '../components/CountUp';
 import { Briefcase, Check, ExternalLink, Globe, Sparkles, X } from 'lucide-react';
 
 // Proper Apple brand logo (silhouette with bite), not the fruit icon
@@ -271,8 +272,8 @@ function ShowcaseCard({ app, reverse }: { app: Showcase; reverse: boolean }) {
   return (
     <article
       data-aos="fade-up"
-      className="group relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-xl"
-      style={{ boxShadow: `0 0 0 1px ${app.accent}14, 0 30px 80px -40px ${app.accent}66` }}
+      className="group relative spotlight beam rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 bg-[hsl(240_25%_8%/0.78)] transition-colors duration-300"
+      style={{ boxShadow: `0 0 0 1px ${app.accent}14, 0 30px 80px -40px ${app.accent}66`, ['--beam-color' as string]: app.accent }}
     >
       <div className="grid lg:grid-cols-12">
         {/* Screenshots */}
@@ -393,10 +394,10 @@ export default function Projects() {
             Apps I own end-to-end, apps I build for clients, and production apps shipped for upGrad, Atlas SkillTech and Hubmatrix.
           </p>
 
-          <div data-aos="fade-up" data-aos-delay="220" className="mt-6 sm:mt-8 inline-grid grid-cols-3 divide-x divide-white/10 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl">
+          <div data-aos="fade-up" data-aos-delay="220" className="mt-6 sm:mt-8 inline-grid grid-cols-3 divide-x divide-white/10 rounded-2xl border border-white/10 bg-[hsl(240_25%_8%/0.78)]">
             {counts.map((c) => (
               <div key={c.label} className="px-4 sm:px-8 py-3 sm:py-4">
-                <div className="text-2xl sm:text-3xl font-display font-bold text-gradient leading-none mb-1">{c.value}</div>
+                <div className="text-2xl sm:text-3xl font-display font-bold text-gradient leading-none mb-1"><CountUp value={c.value} duration={900} /></div>
                 <div className="text-[10px] sm:text-xs text-white/60 whitespace-nowrap">{c.label}</div>
               </div>
             ))}
@@ -432,7 +433,7 @@ export default function Projects() {
                 key={project.id}
                 data-aos="fade-up"
                 data-aos-delay={50 + (index % 3) * 80}
-                className="group relative flex flex-col glass rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer hover:-translate-y-1.5 hover:border-white/20 transition-all duration-500"
+                className="group relative spotlight tilt flex flex-col glass rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer hover:-translate-y-1.5 hover:border-white/20 transition-all duration-500"
                 onClick={() => setSelectedProject(project)}
               >
                 <div className="relative aspect-[16/10] overflow-hidden" style={{ backgroundColor: project.imageBg || '#0b0b14' }}>

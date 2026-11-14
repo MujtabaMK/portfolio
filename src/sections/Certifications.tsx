@@ -124,7 +124,7 @@ export default function Certifications() {
                 aria-label={`Verify Udemy certificate: ${cert.title}`}
                 data-aos="fade-up"
                 data-aos-delay={100 + (index % 4) * 100}
-                className="group glass rounded-2xl p-5 sm:p-6 flex flex-col hover:-translate-y-1 transition-all duration-300"
+                className="group relative spotlight tilt glass rounded-2xl p-5 sm:p-6 flex flex-col hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="flex items-center justify-between mb-4 sm:mb-5">
                   <div
