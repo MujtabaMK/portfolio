@@ -59,15 +59,17 @@ export default function ChatWidget() {
 
   const open = bubble && !dismissed && !inContact;
 
+  // The wrapper ignores clicks so the empty area around the bubble never blocks the page;
+  // only the visible bubble and the launcher receive pointer events.
   return (
-    <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 flex flex-col items-end gap-3">
+    <div className="pointer-events-none fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 flex flex-col items-end gap-3">
       {/* Greeting bubble */}
       <div
         role="dialog"
         aria-label="Chat with Mujtaba"
         aria-hidden={!open}
         className={`w-[calc(100vw-2rem)] max-w-[320px] origin-bottom-right rounded-2xl border border-white/10 bg-[hsl(240_25%_8%/0.97)] shadow-2xl shadow-black/50 transition-[opacity,transform] duration-300 ${
-          open ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-3 scale-95 pointer-events-none'
+          open ? 'pointer-events-auto opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-3 scale-95 pointer-events-none'
         }`}
       >
         <div className="flex items-start gap-3 p-4">
@@ -116,7 +118,7 @@ export default function ChatWidget() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
-        className="chat-launcher relative w-14 h-14 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 text-white flex items-center justify-center shadow-lg shadow-green-600/40 hover:scale-110 active:scale-95 transition-transform"
+        className="chat-launcher pointer-events-auto relative w-14 h-14 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 text-white flex items-center justify-center shadow-lg shadow-green-600/40 hover:scale-110 active:scale-95 transition-transform"
       >
         <span className="absolute inset-0 rounded-full bg-green-400/50 animate-ping [animation-duration:2.5s]" aria-hidden="true" />
         <WhatsAppIcon className="relative w-7 h-7" />
