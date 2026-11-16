@@ -98,14 +98,14 @@ export default function Certifications() {
           <h2
             data-aos="fade-up"
             data-aos-delay="80"
-            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white mb-3 sm:mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-3 sm:mb-4"
           >
             Certifications <span className="text-gradient">& courses</span>
           </h2>
           <p
             data-aos="fade-up"
             data-aos-delay="160"
-            className="text-white/75 max-w-2xl mx-auto text-sm sm:text-base px-4"
+            className="text-foreground/75 max-w-2xl mx-auto text-sm sm:text-base px-4"
           >
             Udemy certificates of completion — click any card to verify it on Udemy.
           </p>
@@ -130,18 +130,18 @@ export default function Certifications() {
                   <div
                     className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center group-hover:scale-110 transition-transform`}
                   >
-                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-foreground" />
                   </div>
-                  <ExternalLink className="w-4 h-4 text-white/40 group-hover:text-white transition-colors" />
+                  <ExternalLink className="w-4 h-4 text-foreground/40 group-hover:text-foreground transition-colors" />
                 </div>
                 <span className="text-[11px] sm:text-xs font-medium uppercase tracking-wider text-primary mb-2">
                   {cert.category}
                 </span>
-                <h3 className="text-base sm:text-lg font-display font-bold text-white mb-2 leading-snug">
+                <h3 className="text-base sm:text-lg font-display font-bold text-foreground mb-2 leading-snug">
                   {cert.title}
                 </h3>
-                <p className="text-white/70 text-xs sm:text-sm mb-4">{cert.instructors}</p>
-                <div className="mt-auto flex items-center gap-2 text-white/60 text-xs">
+                <p className="text-foreground/70 text-xs sm:text-sm mb-4">{cert.instructors}</p>
+                <div className="mt-auto flex items-center gap-2 text-foreground/60 text-xs">
                   <Award className="w-3.5 h-3.5" />
                   <span>Udemy · {cert.date} · {cert.hours} hrs</span>
                 </div>

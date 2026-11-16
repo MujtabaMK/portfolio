@@ -105,10 +105,10 @@ export default function Contact() {
           <span data-aos="fade-up" className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
             Get In Touch
           </span>
-          <h2 data-aos="fade-up" data-aos-delay="80" className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white mb-4">
+          <h2 data-aos="fade-up" data-aos-delay="80" className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">
             Let's <span className="text-gradient">Connect</span>
           </h2>
-          <p data-aos="fade-up" data-aos-delay="160" className="text-white/75 max-w-xl mx-auto text-sm sm:text-base">
+          <p data-aos="fade-up" data-aos-delay="160" className="text-foreground/75 max-w-xl mx-auto text-sm sm:text-base">
             Have a project in mind? Let's discuss how I can help bring your ideas to life.
           </p>
         </div>
@@ -116,7 +116,7 @@ export default function Contact() {
         {/* Interactive brief builder */}
         <ProjectPlanner />
 
-        <p className="text-center text-sm text-white/55 mb-5">Prefer to reach out directly?</p>
+        <p className="text-center text-sm text-foreground/55 mb-5">Prefer to reach out directly?</p>
 
         {/* Contact Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mb-12">
@@ -128,13 +128,13 @@ export default function Contact() {
               rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
               data-aos="zoom-in-up"
               data-aos-delay={80 + index * 100}
-              className="relative spotlight tilt glass rounded-2xl p-5 sm:p-6 text-center group hover:bg-white/10 transition-all duration-300 hover:-translate-y-1"
+              className="relative spotlight tilt glass rounded-2xl p-5 sm:p-6 text-center group hover:bg-foreground/10 transition-all duration-300 hover:-translate-y-1"
             >
-              <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white/[0.06] flex items-center justify-center mx-auto mb-4 group-hover:bg-white/10 group-hover:scale-110 transition-all`}>
+              <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-foreground/[0.06] flex items-center justify-center mx-auto mb-4 group-hover:bg-foreground/10 group-hover:scale-110 transition-all`}>
                 <item.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${item.accent}`} />
               </div>
-              <div className="text-xs sm:text-sm text-white/70 mb-1">{item.label}</div>
-              <div className={`text-white text-sm sm:text-base font-medium group-hover:${item.accent} transition-colors whitespace-nowrap overflow-hidden text-ellipsis`} title={item.value}>
+              <div className="text-xs sm:text-sm text-foreground/70 mb-1">{item.label}</div>
+              <div className={`text-foreground text-sm sm:text-base font-medium group-hover:${item.accent} transition-colors whitespace-nowrap overflow-hidden text-ellipsis`} title={item.value}>
                 {item.value}
               </div>
             </a>
@@ -145,7 +145,7 @@ export default function Contact() {
         <div
           className={`text-center transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
-          <h4 className="text-sm font-semibold text-white/75 mb-4 sm:mb-6 tracking-wider">FOLLOW ME</h4>
+          <h4 className="text-sm font-semibold text-foreground/75 mb-4 sm:mb-6 tracking-wider">FOLLOW ME</h4>
           <div className="flex justify-center gap-4 sm:gap-6">
             {socialLinks.map((social, index) => (
               <a
@@ -156,9 +156,9 @@ export default function Contact() {
                 data-aos="flip-up"
                 data-aos-delay={150 + index * 120}
                 aria-label={social.label}
-                className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-white/5 flex items-center justify-center hover:bg-primary/20 transition-all group hover:scale-110 hover:-translate-y-1"
+                className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-foreground/5 flex items-center justify-center hover:bg-primary/20 transition-all group hover:scale-110 hover:-translate-y-1"
               >
-                <social.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white/85 group-hover:text-primary transition-colors" />
+                <social.icon className="w-5 h-5 sm:w-6 sm:h-6 text-foreground/85 group-hover:text-primary transition-colors" />
               </a>
             ))}
           </div>

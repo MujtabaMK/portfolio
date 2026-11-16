@@ -57,7 +57,7 @@ export default function Navigation({ isScrolled }: NavigationProps) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-background/[0.97] md:bg-background/90 backdrop-blur-xl border-b border-white/10' 
+          ? 'bg-background/[0.97] md:bg-background/90 backdrop-blur-xl border-b border-foreground/10' 
           : 'bg-transparent'
       } ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
     >
@@ -75,7 +75,7 @@ export default function Navigation({ isScrolled }: NavigationProps) {
               className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
               style={{
                 filter:
-                  'invert(1) hue-rotate(180deg) brightness(1.45) contrast(1.25) saturate(1.2) drop-shadow(0 0 18px rgba(124, 58, 237, 0.6))',
+                  'brightness(0.15) sepia(0.25)',
               }}
             />
           </a>
@@ -88,8 +88,8 @@ export default function Navigation({ isScrolled }: NavigationProps) {
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
                 aria-current={active === link.href ? 'true' : undefined}
-                className={`relative text-sm font-medium hover:text-white transition-colors duration-300 group ${
-                  active === link.href ? 'text-white' : 'text-white/70'
+                className={`relative text-sm font-medium hover:text-foreground transition-colors duration-300 group ${
+                  active === link.href ? 'text-foreground' : 'text-foreground/70'
                 }`}
               >
                 {link.name}
@@ -104,7 +104,7 @@ export default function Navigation({ isScrolled }: NavigationProps) {
             <a
               href="#planner"
               onClick={(e) => handleNavClick(e, '#planner')}
-              className="btn-shine relative overflow-hidden hidden lg:inline-flex px-5 py-2.5 rounded-full bg-gradient-to-r from-primary to-accent text-white text-sm font-semibold shadow-lg shadow-primary/30 hover:scale-105 active:scale-95 transition-transform"
+              className="hidden lg:inline-flex px-5 py-2.5 rounded-full bg-[#16130f] text-[#f3eee5] text-sm font-semibold hover:bg-[#2b251e] transition-colors"
             >
               Let's talk
             </a>
@@ -112,12 +112,12 @@ export default function Navigation({ isScrolled }: NavigationProps) {
             {/* Theme Toggle */}
             {/* <button
               onClick={() => setIsDarkMode(!isDarkMode)}
-              className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors duration-300 hover:scale-110 active:scale-90"
+              className="p-2 rounded-full bg-foreground/5 hover:bg-foreground/10 transition-colors duration-300 hover:scale-110 active:scale-90"
             >
               {isDarkMode ? (
-                <Sun className="w-5 h-5 text-white" />
+                <Sun className="w-5 h-5 text-foreground" />
               ) : (
-                <Moon className="w-5 h-5 text-white" />
+                <Moon className="w-5 h-5 text-foreground" />
               )}
             </button> */}
           </div>
@@ -127,19 +127,19 @@ export default function Navigation({ isScrolled }: NavigationProps) {
           <a
             href="#planner"
             onClick={(e) => handleNavClick(e, '#planner')}
-            className="px-4 py-2 rounded-full bg-gradient-to-r from-primary to-accent text-white text-xs font-semibold shadow-lg shadow-primary/30 active:scale-95 transition-transform"
+            className="px-4 py-2 rounded-full bg-[#16130f] text-[#f3eee5] text-xs font-semibold active:scale-95 transition-transform"
           >
             Let's talk
           </a>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors duration-300"
+            className="md:hidden p-2 rounded-lg bg-foreground/5 hover:bg-foreground/10 transition-colors duration-300"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
-              <X className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+              <X className="w-5 h-5 sm:w-6 sm:h-6 text-foreground" />
             ) : (
-              <Menu className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+              <Menu className="w-5 h-5 sm:w-6 sm:h-6 text-foreground" />
             )}
           </button>
           </div>
@@ -148,7 +148,7 @@ export default function Navigation({ isScrolled }: NavigationProps) {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden bg-background/95 backdrop-blur-xl border-b border-white/10 overflow-hidden transition-all duration-300 ${
+        className={`md:hidden bg-background/95 backdrop-blur-xl border-b border-foreground/10 overflow-hidden transition-all duration-300 ${
           isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
@@ -159,8 +159,8 @@ export default function Navigation({ isScrolled }: NavigationProps) {
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
               aria-current={active === link.href ? 'true' : undefined}
-              className={`block py-3 px-4 rounded-lg text-base font-medium hover:text-white hover:bg-white/5 transition-colors duration-300 ${
-                active === link.href ? 'text-white bg-white/5 border-l-2 border-primary' : 'text-white/70'
+              className={`block py-3 px-4 rounded-lg text-base font-medium hover:text-foreground hover:bg-foreground/5 transition-colors duration-300 ${
+                active === link.href ? 'text-foreground bg-foreground/5 border-l-2 border-primary' : 'text-foreground/70'
               }`}
             >
               {link.name}
