@@ -4,16 +4,16 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative py-8 sm:py-12 border-t border-white/10">
+    <footer className="relative py-8 sm:py-12 border-t border-foreground/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
           {/* Copyright */}
-          <p className="text-white/85 text-xs sm:text-sm font-semibold">
+          <p className="text-foreground/85 text-xs sm:text-sm font-semibold">
             © {currentYear} Mujtaba Khan (Mujtaba Ul Hasan Khan). All rights reserved.
           </p>
 
           {/* Tagline */}
-          <div className="flex items-center gap-1.5 sm:gap-2 text-white/70 text-xs sm:text-sm">
+          <div className="flex items-center gap-1.5 sm:gap-2 text-foreground/70 text-xs sm:text-sm">
             <span>Crafted with</span>
             <span className="animate-pulse">
               <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-red-500 fill-red-500" />
@@ -23,7 +23,7 @@ export default function Footer() {
         </div>
 
         {/* Quick Links */}
-        <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/5 flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm">
+        <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-foreground/5 flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm">
           {['About', 'Skills', 'Projects', 'Experience', 'Contact'].map((link) => (
             <a
               key={link}
@@ -32,7 +32,7 @@ export default function Footer() {
                 e.preventDefault();
                 document.querySelector(`#${link.toLowerCase()}`)?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="text-white/65 hover:text-white transition-colors"
+              className="text-foreground/65 hover:text-foreground transition-colors"
             >
               {link}
             </a>

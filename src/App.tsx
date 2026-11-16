@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, lazy, Suspense } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Lenis from 'lenis';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -6,7 +6,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Navigation from './sections/Navigation';
-import Hero from './sections/Hero';
+import PhoneStory from './sections/PhoneStory';
 import About from './sections/About';
 import Skills from './sections/Skills';
 import Services from './sections/Services';
@@ -15,7 +15,6 @@ import Experience from './sections/Experience';
 import Certifications from './sections/Certifications';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
-import TechMarquee from './components/TechMarquee';
 import KineticHeadline from './components/KineticHeadline';
 import CustomCursor from './components/CustomCursor';
 import ChatWidget from './components/ChatWidget';
@@ -24,8 +23,6 @@ import { ArrowUp } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// three.js is ~800 KB — load it in a separate chunk so the page itself becomes interactive first
-const ThreeBackground = lazy(() => import('./components/ThreeBackground'));
 
 // Phones/tablets: native scrolling is the smoothest option (Lenis only adds JS work there)
 const isTouchDevice = () =>
@@ -52,7 +49,8 @@ function App() {
       if (progressRef.current) {
         progressRef.current.style.transform = `scaleX(${max > 0 ? Math.min(1, y / max) : 0})`;
       }
-      const top = y > 900;
+      const story = document.getElementById('story');
+      const top = y > (story ? story.offsetTop + story.offsetHeight - window.innerHeight : 900);
       if (top !== topFlag) {
         topFlag = top;
         setShowTop(top);
@@ -208,30 +206,26 @@ function App() {
   if (isLoading) {
     return (
       <div className="fixed inset-0 z-[100] flex items-center justify-center bg-background">
-        <div className="relative">
-          <div className="w-16 h-16 rounded-full bg-gradient-to-r from-primary to-accent animate-pulse" />
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-accent blur-xl opacity-60 animate-pulse" />
-        </div>
+        <div className="text-[11px] tracking-[0.2em] uppercase text-foreground/50">Mujtaba Khan — Portfolio</div>
       </div>
     );
   }
 
   return (
-    <div id="top" ref={mainRef} className="relative min-h-screen bg-background overflow-x-hidden">
+    <div id="top" ref={mainRef} className="relative min-h-screen bg-background [overflow-x:clip]">
       {/* Scroll progress */}
       <div
         ref={progressRef}
-        className="fixed top-0 left-0 right-0 h-[3px] z-[60] origin-left bg-gradient-to-r from-primary via-accent to-fuchsia-500 pointer-events-none"
+        className="fixed top-0 left-0 right-0 h-[3px] z-[60] origin-left bg-[#9a7440] pointer-events-none"
         style={{ transform: 'scaleX(0)', willChange: 'transform' }}
         aria-hidden="true"
       />
 
-      {/* Three.js full-page 3D background */}
-      <Suspense fallback={null}>
-        <ThreeBackground />
-      </Suspense>
 
-      {/* Original gradient orbs (tuned down to layer with 3D scene) */}
+      {/* Film grain */}
+      <div className="film-grain" aria-hidden="true" />
+
+      {/* Soft gradient orbs */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 1 }}>
         <div
           className="gradient-orb -top-40 -right-40"
@@ -255,8 +249,7 @@ function App() {
 
       {/* Main content */}
       <main className="relative" style={{ zIndex: 10 }}>
-        <Hero />
-        <TechMarquee />
+        <PhoneStory />
         <About />
         <Skills />
         <Services />
@@ -278,7 +271,7 @@ function App() {
       <a
         href="#top"
         aria-label="Back to top"
-        className={`fixed bottom-4 left-4 sm:bottom-8 sm:left-8 z-50 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-primary to-accent text-white flex items-center justify-center shadow-lg shadow-primary/40 transition-all duration-300 hover:scale-110 active:scale-95 ${
+        className={`fixed bottom-4 left-4 sm:bottom-8 sm:left-8 z-50 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#16130f] text-[#f3eee5] flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 active:scale-95 ${
           showTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
         }`}
       >

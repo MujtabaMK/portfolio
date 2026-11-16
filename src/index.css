@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,25 +6,25 @@
 
 @layer base {
   :root {
-    --background: 240 33% 3%;
-    --foreground: 0 0% 100%;
-    --card: 240 25% 6%;
-    --card-foreground: 0 0% 100%;
-    --popover: 240 25% 6%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 243 75% 59%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 240 25% 10%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 240 20% 15%;
-    --muted-foreground: 240 5% 65%;
-    --accent: 263 70% 50%;
-    --accent-foreground: 0 0% 100%;
+    --background: 38 36% 93%;
+    --foreground: 34 19% 7%;
+    --card: 40 50% 97%;
+    --card-foreground: 34 19% 7%;
+    --popover: 40 50% 97%;
+    --popover-foreground: 34 19% 7%;
+    --primary: 35 41% 43%;
+    --primary-foreground: 38 36% 95%;
+    --secondary: 36 26% 88%;
+    --secondary-foreground: 34 19% 7%;
+    --muted: 36 22% 87%;
+    --muted-foreground: 33 10% 40%;
+    --accent: 30 36% 32%;
+    --accent-foreground: 38 36% 95%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 10% 15%;
-    --input: 240 10% 15%;
-    --ring: 243 75% 59%;
+    --border: 34 18% 80%;
+    --input: 34 18% 80%;
+    --ring: 35 41% 43%;
     --radius: 0.75rem;
     
     --ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -44,11 +44,11 @@
   
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', -apple-system, sans-serif;
+  h1, h2, h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
     letter-spacing: -0.02em;
   }
 }
@@ -59,16 +59,16 @@
   }
   
   .glass {
-    @apply border border-white/10;
-    background-color: hsl(240 25% 8% / 0.78);
+    @apply border border-foreground/10;
+    background-color: hsl(40 50% 98% / 0.82);
   }
   
   .glow {
-    box-shadow: 0 0 40px rgba(79, 70, 229, 0.3);
+    box-shadow: 0 0 40px rgba(154, 116, 64, 0.3);
   }
   
   .glow-strong {
-    box-shadow: 0 0 60px rgba(79, 70, 229, 0.5);
+    box-shadow: 0 0 60px rgba(154, 116, 64, 0.5);
   }
 }
 
@@ -102,10 +102,10 @@
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
+    box-shadow: 0 0 20px rgba(154, 116, 64, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(79, 70, 229, 0.6);
+    box-shadow: 0 0 40px rgba(154, 116, 64, 0.6);
   }
 }
 
@@ -169,8 +169,8 @@
   height: 600px;
   border-radius: 50%;
   background: radial-gradient(circle, 
-    rgba(79, 70, 229, 0.4) 0%, 
-    rgba(124, 58, 237, 0.2) 40%, 
+    rgba(154, 116, 64, 0.4) 0%, 
+    rgba(154, 116, 64, 0.2) 40%, 
     transparent 70%
   );
   filter: blur(60px);
@@ -190,7 +190,7 @@
 
 .card-hover:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(79, 70, 229, 0.2);
+  box-shadow: 0 20px 40px rgba(154, 116, 64, 0.2);
 }
 
 /* Timeline styles */
@@ -208,7 +208,7 @@
 
 .input-focus:focus {
   border-color: hsl(var(--primary));
-  box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
+  box-shadow: 0 0 20px rgba(154, 116, 64, 0.3);
 }
 
 /* Fade in animation */
@@ -267,7 +267,7 @@
   }
 
   .glass {
-    background-color: hsl(240 25% 8% / 0.82);
+    background-color: hsl(40 50% 98% / 0.86);
   }
 
   /* The radial gradient already fades out — no filter needed */
@@ -276,8 +276,8 @@
     height: 420px;
     filter: none;
     background: radial-gradient(circle,
-      rgba(79, 70, 229, 0.28) 0%,
-      rgba(124, 58, 237, 0.12) 40%,
+      rgba(154, 116, 64, 0.28) 0%,
+      rgba(154, 116, 64, 0.12) 40%,
       transparent 70%
     );
   }
@@ -292,8 +292,8 @@
    Polish effects (all transform/opacity based — cheap to animate)
    ------------------------------------------------------------------ */
 ::selection {
-  background: hsl(var(--accent) / 0.45);
-  color: #fff;
+  background: hsl(var(--primary) / 0.28);
+  color: #16130f;
 }
 
 /* Tech marquee */
@@ -346,7 +346,7 @@
     transition: opacity 0.3s ease;
     background: radial-gradient(
       420px circle at var(--mx, 50%) var(--my, 50%),
-      rgba(124, 58, 237, 0.16),
+      rgba(154, 116, 64, 0.16),
       transparent 45%
     );
   }
@@ -365,7 +365,7 @@
   }
   .tilt:hover {
     transform: perspective(900px) translateY(-6px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-    box-shadow: 0 28px 50px -24px rgba(79, 70, 229, 0.55);
+    box-shadow: 0 28px 50px -24px rgba(154, 116, 64, 0.55);
   }
 
   /* Slow light sweep through the name gradient */
@@ -411,13 +411,13 @@
 /* ---------- iPhone mockup (hero) ---------- */
 .phone-wallpaper {
   background:
-    radial-gradient(60% 40% at 15% 8%, rgba(124, 58, 237, 0.95) 0%, transparent 70%),
+    radial-gradient(60% 40% at 15% 8%, rgba(154, 116, 64, 0.95) 0%, transparent 70%),
     radial-gradient(55% 35% at 90% 30%, rgba(219, 39, 119, 0.75) 0%, transparent 70%),
-    radial-gradient(70% 45% at 40% 95%, rgba(79, 70, 229, 0.9) 0%, transparent 70%),
+    radial-gradient(70% 45% at 40% 95%, rgba(154, 116, 64, 0.9) 0%, transparent 70%),
     #0b0820;
 }
 .phone-glow {
-  background: radial-gradient(closest-side, rgba(124, 58, 237, 0.55), rgba(79, 70, 229, 0.25) 55%, transparent);
+  background: radial-gradient(closest-side, rgba(154, 116, 64, 0.55), rgba(154, 116, 64, 0.25) 55%, transparent);
   pointer-events: none;
 }
 .phone-float {
@@ -469,8 +469,8 @@
       from var(--beam-angle),
       transparent 0deg,
       transparent 250deg,
-      var(--beam-color, #a78bfa) 320deg,
-      #ffffff 352deg,
+      var(--beam-color, #9a7440) 320deg,
+      #e8cf9f 352deg,
       transparent 360deg
     );
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
@@ -491,7 +491,7 @@
 /* ---------- Kinetic headline ---------- */
 .text-outline {
   color: transparent;
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.32);
+  -webkit-text-stroke: 1.5px rgba(22, 19, 15, 0.38);
 }
 .marquee-track-reverse {
   animation: marquee 32s linear infinite reverse;
@@ -517,7 +517,7 @@
   height: 38px;
   margin: -19px 0 0 -19px;
   border-radius: 9999px;
-  border: 1.5px solid rgba(167, 139, 250, 0.75);
+  border: 1.5px solid rgba(154, 116, 64, 0.75);
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.3s, border-color 0.3s, opacity 0.3s;
 }
 .cursor-dot-inner {
@@ -525,13 +525,13 @@
   height: 6px;
   margin: -3px 0 0 -3px;
   border-radius: 9999px;
-  background: #fff;
+  background: #16130f;
   transition: opacity 0.3s, transform 0.2s;
 }
 .cursor-hover .cursor-ring-inner {
   transform: scale(1.7);
-  background-color: rgba(124, 58, 237, 0.14);
-  border-color: rgba(196, 181, 253, 0.9);
+  background-color: rgba(154, 116, 64, 0.14);
+  border-color: rgba(154, 116, 64, 0.95);
 }
 .cursor-hover .cursor-dot-inner {
   transform: scale(0.5);
@@ -543,3 +543,23 @@
 .cursor-hidden .cursor-dot-inner {
   opacity: 0;
 }
+
+/* Premium editorial accents */
+.font-serif-display { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; }
+.micro-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+
+/* Film grain over the whole site */
+.film-grain {
+  position: fixed; inset: -50%; width: 200%; height: 200%; pointer-events: none; z-index: 90; opacity: 0.045; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation: film-grain 1s steps(6) infinite;
+}
+@keyframes film-grain {
+  0%, 100% { transform: translate(0, 0); } 20% { transform: translate(-3%, 2%); } 40% { transform: translate(2%, -3%); }
+  60% { transform: translate(-2%, -1%); } 80% { transform: translate(3%, 3%); }
+}
+@media (prefers-reduced-motion: reduce) { .film-grain { animation: none; } }
+.ps { font-family: 'Manrope', -apple-system, system-ui, sans-serif; }
+
+/* Cormorant uses old-style figures by default ("10+" looks like "IO+"); use full-height numbers */
+h1, h2, h3, h4, .font-display, .font-serif-display, .ps-widget b { font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1; }

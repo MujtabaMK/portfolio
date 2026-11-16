@@ -28,7 +28,7 @@ function SkillRing({ name, level, from, to, id }: { name: string; level: number;
               <stop offset="100%" stopColor={to} />
             </linearGradient>
           </defs>
-          <circle cx="60" cy="60" r={RING_R} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="9" />
+          <circle cx="60" cy="60" r={RING_R} fill="none" stroke="rgba(22,19,15,0.08)" strokeWidth="9" />
           <circle
             className="skill-ring"
             data-level={level}
@@ -45,10 +45,10 @@ function SkillRing({ name, level, from, to, id }: { name: string; level: number;
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <CountUp value={level} suffix="%" className="text-lg sm:text-xl font-display font-bold text-white" />
+          <CountUp value={level} suffix="%" className="text-lg sm:text-xl font-display font-bold text-foreground" />
         </div>
       </div>
-      <div className="mt-3 text-sm sm:text-base font-semibold text-white">{name}</div>
+      <div className="mt-3 text-sm sm:text-base font-semibold text-foreground">{name}</div>
       <div className="mt-2 h-1 w-10 rounded-full" style={{ background: `linear-gradient(90deg, ${from}, ${to})` }} />
     </div>
   );
@@ -100,10 +100,10 @@ export default function Skills() {
           <span data-aos="fade-up" className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-4 sm:mb-6">
             My Expertise
           </span>
-          <h2 data-aos="fade-up" data-aos-delay="80" className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white mb-3 sm:mb-4">
+          <h2 data-aos="fade-up" data-aos-delay="80" className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-3 sm:mb-4">
             Skills & <span className="text-gradient">Technologies</span>
           </h2>
-          <p data-aos="fade-up" data-aos-delay="160" className="text-white/60 max-w-2xl mx-auto text-sm sm:text-base px-4">
+          <p data-aos="fade-up" data-aos-delay="160" className="text-foreground/60 max-w-2xl mx-auto text-sm sm:text-base px-4">
             Technologies I work with daily to create exceptional iOS applications
           </p>
         </div>
@@ -111,7 +111,7 @@ export default function Skills() {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Core skills: animated rings */}
           <div ref={barsContainerRef}>
-            <h3 data-aos="fade-right" className="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-6">
+            <h3 data-aos="fade-right" className="text-lg sm:text-xl font-semibold text-foreground mb-4 sm:mb-6">
               Core Skills
             </h3>
             <div data-aos="fade-up" className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
@@ -123,7 +123,7 @@ export default function Skills() {
 
           {/* Technologies Cloud */}
           <div>
-            <h3 data-aos="fade-left" className="text-lg sm:text-xl font-semibold text-white mb-4 sm:mb-6">
+            <h3 data-aos="fade-left" className="text-lg sm:text-xl font-semibold text-foreground mb-4 sm:mb-6">
               Technologies & Tools
             </h3>
 
@@ -132,7 +132,7 @@ export default function Skills() {
                 {technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/5 text-white/80 text-xs sm:text-sm font-medium border border-white/10 hover:bg-primary/25 hover:border-primary/60 hover:text-white hover:shadow-[0_0_18px_rgba(124,58,237,0.45)] hover:-translate-y-0.5 transition-[transform,background-color,border-color,box-shadow,color] duration-300 cursor-default"
+                    className="px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-foreground/5 text-foreground/80 text-xs sm:text-sm font-medium border border-foreground/10 hover:bg-primary/25 hover:border-primary/60 hover:text-foreground hover:shadow-[0_0_18px_rgba(154,116,64,0.45)] hover:-translate-y-0.5 transition-[transform,background-color,border-color,box-shadow,color] duration-300 cursor-default"
                   >
                     {tech}
                   </span>
@@ -146,13 +146,13 @@ export default function Skills() {
                 <div className="text-2xl sm:text-3xl font-display font-bold text-gradient mb-0.5 sm:mb-1">
                   <CountUp value={10} suffix="+" />
                 </div>
-                <div className="text-xs sm:text-sm text-white/60">Apps on App Store</div>
+                <div className="text-xs sm:text-sm text-foreground/60">Apps on App Store</div>
               </div>
               <div data-aos="fade-up" data-aos-delay="200" className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4 text-center hover:scale-105 transition-transform">
                 <div className="text-2xl sm:text-3xl font-display font-bold text-gradient mb-0.5 sm:mb-1">
                   <CountUp value={50} suffix="K+" />
                 </div>
-                <div className="text-xs sm:text-sm text-white/60">Total Downloads</div>
+                <div className="text-xs sm:text-sm text-foreground/60">Total Downloads</div>
               </div>
             </div>
           </div>

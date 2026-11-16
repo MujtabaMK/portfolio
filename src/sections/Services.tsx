@@ -46,14 +46,14 @@ export default function Services() {
           <h2
             data-aos="fade-up"
             data-aos-delay="80"
-            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white mb-3 sm:mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-3 sm:mb-4"
           >
             Services <span className="text-gradient">I offer</span>
           </h2>
           <p
             data-aos="fade-up"
             data-aos-delay="160"
-            className="text-white/75 max-w-2xl mx-auto text-sm sm:text-base px-4"
+            className="text-foreground/75 max-w-2xl mx-auto text-sm sm:text-base px-4"
           >
             Whether you need a senior engineer on your team or a developer to ship your app idea — here's how I help.
           </p>
@@ -71,12 +71,12 @@ export default function Services() {
               <div
                 className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-4 sm:mb-5 group-hover:scale-110 transition-transform`}
               >
-                <service.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                <service.icon className="w-5 h-5 sm:w-6 sm:h-6 text-foreground" />
               </div>
-              <h3 className="text-base sm:text-lg font-display font-bold text-white mb-2">
+              <h3 className="text-base sm:text-lg font-display font-bold text-foreground mb-2">
                 {service.title}
               </h3>
-              <p className="text-white/70 text-xs sm:text-sm leading-relaxed">
+              <p className="text-foreground/70 text-xs sm:text-sm leading-relaxed">
                 {service.blurb}
               </p>
             </div>
@@ -89,14 +89,14 @@ export default function Services() {
           data-aos-delay="500"
           className="mt-10 sm:mt-14 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-center"
         >
-          <p className="text-white/75 text-sm sm:text-base">Have a project in mind?</p>
+          <p className="text-foreground/75 text-sm sm:text-base">Have a project in mind?</p>
           <a
             href="#contact"
             onClick={(e) => {
               e.preventDefault();
               document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-white/5 border border-white/15 text-white text-sm font-medium hover:bg-white/10 transition-colors"
+            className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-foreground/5 border border-foreground/15 text-foreground text-sm font-medium hover:bg-foreground/10 transition-colors"
           >
             Let's talk →
           </a>

@@ -125,10 +125,10 @@ export default function Experience() {
           <span data-aos="fade-up" className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-4 sm:mb-6">
             Career Journey
           </span>
-          <h2 data-aos="fade-up" data-aos-delay="80" className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-white mb-3 sm:mb-4">
+          <h2 data-aos="fade-up" data-aos-delay="80" className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-3 sm:mb-4">
             Work <span className="text-gradient">Experience</span>
           </h2>
-          <p data-aos="fade-up" data-aos-delay="160" className="text-white/75 max-w-2xl mx-auto text-sm sm:text-base px-4">
+          <p data-aos="fade-up" data-aos-delay="160" className="text-foreground/75 max-w-2xl mx-auto text-sm sm:text-base px-4">
             My professional journey as an iOS developer
           </p>
         </div>
@@ -136,10 +136,10 @@ export default function Experience() {
         {/* Timeline */}
         <div ref={timelineRef} className="relative">
           {/* Timeline track + scroll-driven fill - hidden on mobile */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-white/10 -translate-x-1/2" />
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-foreground/10 -translate-x-1/2" />
           <div
             ref={fillRef}
-            className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[3px] origin-top rounded-full bg-gradient-to-b from-primary via-accent to-fuchsia-500 shadow-[0_0_14px_rgba(124,58,237,0.8)]"
+            className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[3px] origin-top rounded-full bg-gradient-to-b from-primary via-accent to-primary/40"
             style={{ transform: 'translateX(-50%) scaleY(0)', willChange: 'transform' }}
           />
 
@@ -156,7 +156,7 @@ export default function Experience() {
                 {/* Timeline Dot - hidden on mobile */}
                 <div className="hidden md:flex absolute left-1/2 top-8 w-5 h-5 rounded-full bg-gradient-to-r from-primary to-accent -translate-x-1/2 z-10 items-center justify-center ring-4 ring-background">
                   <span className="absolute inset-0 rounded-full bg-accent/60 animate-ping" />
-                  <div className="relative w-2 h-2 rounded-full bg-white" />
+                  <div className="relative w-2 h-2 rounded-full bg-foreground" />
                 </div>
 
                 {/* Content Card */}
@@ -165,16 +165,16 @@ export default function Experience() {
                     {/* Header */}
                     <div className="flex items-start sm:items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
                       <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-r ${exp.color} flex items-center justify-center flex-shrink-0`}>
-                        <Briefcase className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                        <Briefcase className="w-5 h-5 sm:w-6 sm:h-6 text-foreground" />
                       </div>
                       <div className="min-w-0">
-                        <h3 className="text-lg sm:text-xl font-display font-bold text-white truncate">{exp.company}</h3>
+                        <h3 className="text-lg sm:text-xl font-display font-bold text-foreground truncate">{exp.company}</h3>
                         <p className="text-primary font-medium text-sm sm:text-base">{exp.role}</p>
                       </div>
                     </div>
 
                     {/* Meta Info */}
-                    <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-3 sm:mb-4 text-xs sm:text-sm text-white/70">
+                    <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-3 sm:mb-4 text-xs sm:text-sm text-foreground/70">
                       <span className="flex items-center gap-1">
                         <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
                         {exp.period}
@@ -186,7 +186,7 @@ export default function Experience() {
                     </div>
 
                     {/* Description */}
-                    <p className="text-white/70 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">
+                    <p className="text-foreground/70 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">
                       {exp.description}
                     </p>
 
@@ -195,7 +195,7 @@ export default function Experience() {
                       {exp.achievements.map((achievement, i) => (
                         <div 
                           key={i}
-                          className="flex items-start gap-2 text-xs sm:text-sm text-white/75"
+                          className="flex items-start gap-2 text-xs sm:text-sm text-foreground/75"
                         >
                           <span className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0" />
                           <span>{achievement}</span>
@@ -224,7 +224,7 @@ export default function Experience() {
               className="relative spotlight tilt glass rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center"
             >
               <div className="text-2xl sm:text-3xl font-display font-bold text-gradient mb-0.5 sm:mb-1"><CountUp value={stat.value} suffix={stat.suffix} /></div>
-              <div className="text-xs sm:text-sm text-white/50">{stat.label}</div>
+              <div className="text-xs sm:text-sm text-foreground/50">{stat.label}</div>
             </div>
           ))}
         </div>

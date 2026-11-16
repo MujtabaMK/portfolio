@@ -3,7 +3,7 @@
 // The client app (main.tsx) replaces this markup when it loads.
 import { renderToString } from 'react-dom/server';
 import Navigation from './sections/Navigation';
-import Hero from './sections/Hero';
+import PhoneStory from './sections/PhoneStory';
 import About from './sections/About';
 import Skills from './sections/Skills';
 import Services from './sections/Services';
@@ -12,7 +12,6 @@ import Experience from './sections/Experience';
 import Certifications from './sections/Certifications';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
-import TechMarquee from './components/TechMarquee';
 import KineticHeadline from './components/KineticHeadline';
 import CtaBand from './components/CtaBand';
 
@@ -21,16 +20,12 @@ export function render() {
     <>
       {/* Same loading screen App.tsx shows first, so visitors see no flash */}
       <div className="fixed inset-0 z-[100] flex items-center justify-center bg-background">
-        <div className="relative">
-          <div className="w-16 h-16 rounded-full bg-gradient-to-r from-primary to-accent animate-pulse" />
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-accent blur-xl opacity-60 animate-pulse" />
-        </div>
+        <div className="text-[11px] tracking-[0.2em] uppercase text-foreground/50">Mujtaba Khan — Portfolio</div>
       </div>
-      <div className="relative min-h-screen bg-background overflow-x-hidden">
+      <div className="relative min-h-screen bg-background [overflow-x:clip]">
         <Navigation isScrolled={false} />
         <main className="relative" style={{ zIndex: 10 }}>
-          <Hero />
-          <TechMarquee />
+          <PhoneStory />
           <About />
           <Skills />
           <Services />
